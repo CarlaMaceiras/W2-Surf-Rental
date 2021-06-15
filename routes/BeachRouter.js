@@ -7,7 +7,7 @@ const BeachRouter = express.Router();
 // GET todas las playas                                 
 BeachRouter.get("/", async (req, res) => {
 
-    let beaches = await Beach.find({});                     //Buscamos con .find() todo lo que hay dentro del objeto{} de Beach. (nombre, localización y equipmentAvailable[vacía])
+    let beaches = await Beach.find({});         //Buscamos con .find() todo lo que hay dentro del objeto{} de Beach. (nombre, localización y equipmentAvailable[vacía])
 
     return res.json({                                       //Le decimos que nos devuelva en un json lo que se encontró en el objeto, que está guardado en la variable "beaches"
         success: true,
@@ -111,36 +111,44 @@ BeachRouter.delete ("/deleteBeach/:id", async (req, res) => {
     const { id } = req.params
     const {beachId} = req.body;
 
-    let playa = await Beach.findById(id)
+    let playa = await Beach.findById(id);
 
-    let borrarPlaya= await playa.deleteOne(beachId= id);
+    let borrarPlaya= await playa.deleteOne({"_id" : beachId});
 
     borrarPlaya.save()
+
    
     return res.json ({
         success: true,
         message: "Playa eliminada correctamente"
-    });
-
-    
+    });   
 
 })
 
 //Eliminar material concreto de una playa
 
-BeachRouter.put("/removeEquipment/:id", async (req, res) => {
-    const { id } = req.params;
-    const { sportEquipmentId } = req.body;
+BeachRouter.put("/removeEquipment/:id", async (req, res, next) => {
+    const { id } = req.params;                                              //id de la playa
+    const { sportEquipment_id } = req.body;                                 //_id del objeto
+
+    if (!sportEquipment_id) {
+        return next({
+            status: 403,
+            message: "introduce el _id"
+        })
+    }
 
     let beach = await Beach.findById(id)
 
     const index = beach.equipmentAvailable.findIndex(equipment => {         //Quiero eliminar un material concreto con el _id, no con el sportequipmentid porque sino se me borra el primero
-        if (equipment._id == sportEquipmentId) {                            //ERROR
+        
+        if (equipment._id == sportEquipment_id) {                            //ERROR
             return true
         }
 
         return false
     })
+
 
     if (index > -1) {
         beach.equipmentAvailable.splice(index, 1);
@@ -150,7 +158,8 @@ BeachRouter.put("/removeEquipment/:id", async (req, res) => {
         .then(newBeach => {
             return res.json({
                 success: true,
-                beach: newBeach
+                beach: newBeach,
+                message: "Material actualizado correctamente"
             });
         });
 

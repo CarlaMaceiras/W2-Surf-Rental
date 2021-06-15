@@ -18,7 +18,13 @@ const RentalSchema = new mongoose.Schema({
 
     quantity: Number,
     
-    date: Date
+    date: Date,
+
+    status: {
+        type: String,
+        default: "reservado",
+        enum: ["reservado", "libre"]
+    }
 
 });
 
