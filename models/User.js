@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const UserRouter = require("../routes/UserRouter");
 const bcrypt = require("bcrypt");
 
 const UserSchema = new mongoose.Schema({

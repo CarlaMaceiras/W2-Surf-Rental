@@ -1,6 +1,5 @@
-const { JsonWebTokenError } = require("jsonwebtoken");
 const jwt = require("jsonwebtoken");
-const Admin = require("./models/Admin");
+const User = require("./models/User");
 
 
 let checkToken = (req, res, next) => {
@@ -48,16 +47,21 @@ const errorHandler = (err, req, res, next) => {   //En err recibe el objeto que 
 const authAdmin = async (req, res, next) =>{
     try {
         // Cogemos la informacion del usuario por id, para verificar si su role es 0(user) o 1(admin)
-        const admin = await User.findOne({
-            _id: req.user.id
-        })
-        if(admin.role === 0)
-            return res.status(400).json({msg: "Acceso denegado! No eres admin"})
+        const admin = await User.findById(req.user.id)
+
+        if(admin.role == 0)
+            return res.status(400).json({
+                success: false,
+                msg: "Acceso denegado! No eres admin"
+            })
 
         next()
         
     } catch (err) {
-        return res.status(500).json({msg: err.message})
+        return res.status(500).json({
+            success: false,
+            msg: err.message
+        })
     }
 }
 

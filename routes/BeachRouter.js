@@ -1,5 +1,5 @@
 const express = require("express");
-const { errorHandler, authAdmin } = require("../middleware");
+const { authAdmin, checkToken } = require("../middleware");
 const Beach = require("../models/Beach");
 const SportEquipment = require("../models/SportEquipment");
 const BeachRouter = express.Router();
@@ -251,10 +251,9 @@ BeachRouter.put("/removeEquipment/:id", async (req, res, next) => {
 
 //Crear una playa
 
-BeachRouter.post("/newBeach", authAdmin, async (req, res, next) => {
+BeachRouter.post("/newBeach", checkToken, authAdmin, async (req, res, next) => {
 
     try {
-
 
         const { name, location } = req.body;
 

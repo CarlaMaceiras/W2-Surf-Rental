@@ -3,9 +3,11 @@ const User = require("../models/User");
 const UserRouter = express.Router();
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const { JWT_SECRET } = process.env;
+const { JWT_SECRET, PORT } = process.env;
 const { check, oneOf } = require('express-validator');
 const validator = require('validator');
+
+
 
 
 //Singup
@@ -98,7 +100,7 @@ UserRouter.post("/singup", async (req, res, next) => {  //
 });
 
 
-//Singup Admin
+// //Singup Admin
 
 UserRouter.post("/singup/newAdmin", async (req, res, next) => {  //  
 
@@ -210,6 +212,8 @@ UserRouter.post("/login", async (req, res, next) => {
                 message: "wrong credentials (password)"
             })
         }
+
+        
 
         const token = jwt.sign({ id: user._id }, JWT_SECRET, { expiresIn: "24h" });   
         
