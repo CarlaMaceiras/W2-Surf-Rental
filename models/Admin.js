@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
-const UserRouter = require("../routes/UserRouter");
+const AdminRouter = require("../routes/UserRouter");
 const bcrypt = require("bcrypt");
 
-const UserSchema = new mongoose.Schema({
+const AdminSchema = new mongoose.Schema({
 
     name: {
         type: String,
@@ -28,13 +28,13 @@ const UserSchema = new mongoose.Schema({
 
     role: {
         type: Number,
-        default: 0                      //0= todos usuarios, 1= admin
+        default: 1                      //0= todos usuarios, 1= admin
     },
     
 });
 
 //Encriptar contraseña para que no se vea en la base de datos
-UserSchema.pre("save", function (next) {                                    
+AdminSchema.pre("save", function (next) {                                    
     if (!this.isNew || !this.isModified("password")) {              
         return next();
     }
@@ -51,4 +51,4 @@ UserSchema.pre("save", function (next) {
     });
 });
 
-module.exports = mongoose.model("User", UserSchema);
+module.exports = mongoose.model("Admin", AdminSchema);

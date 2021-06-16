@@ -4,7 +4,7 @@ const Beach = require("../models/Beach");
 const SportEquipmentRouter = express.Router();
 
 //coger, ver, todo el material (sin estar asociado a una playa)
-SportEquipmentRouter.get("/", async (req, res) => {
+SportEquipmentRouter.get("/", async (req, res, next) => {
     try {
 
         let sports = await SportEquipment.find({})
@@ -24,11 +24,20 @@ SportEquipmentRouter.get("/", async (req, res) => {
 });
 
 //Crear nuevo material
-SportEquipmentRouter.post("/", (req, res, next) => {
+SportEquipmentRouter.post("/", async (req, res, next) => {
     try {
 
 
         const { model, size, level } = req.body;
+
+        const findEquipment = await SportEquipment.findOne({ model }, {size}, {level})       //Si el material existe, nos avisa de que ya existe     
+
+        if (findEquipment) {
+            return next({
+                status: 403,
+                message: "This equipment already exists"
+            });
+        }
 
         if (!model || !size || !level) {
             return next({

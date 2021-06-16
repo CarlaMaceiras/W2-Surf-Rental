@@ -132,7 +132,7 @@ RentalRouter.get("/myRental/:nuevaReservaId", async (req, res, next) => {
         const user = req.user.id;
         const { nuevaReservaId } = req.params;
 
-        let oneRental = await Rental.findById(nuevaReservaId);
+        let oneRental = await Rental.findById(nuevaReservaId).populate("beach", "name").populate("sportEquipment");
 
         if (!oneRental) {
             return next({

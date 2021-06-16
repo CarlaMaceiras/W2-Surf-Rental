@@ -13,7 +13,7 @@ const RentalSchema = new mongoose.Schema({
 
     sportEquipment: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Beach.equipmentAvailable",
+        ref: "SportEquipment",
     },
 
     quantity: Number,

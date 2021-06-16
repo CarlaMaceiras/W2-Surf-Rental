@@ -10,10 +10,7 @@ const BeachSchema= new mongoose.Schema({
         },
         stock: Number
       }]
-    // Activities: {
-    //     type: mongoose.Schema.Types.ObjectId,
-    //     ref: ""
-    // }
+   
 });
 
 module.exports= mongoose.model("Beach", BeachSchema);
