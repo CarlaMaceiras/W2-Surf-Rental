@@ -1,5 +1,5 @@
 const express = require("express");
-const { errorHandler } = require("../middleware");
+const { errorHandler, authAdmin } = require("../middleware");
 const Rental = require("../models/Rental");
 const RentalRouter = express.Router();
 const User = require("../models/User");
@@ -104,10 +104,41 @@ RentalRouter.get("/myRental", async (req, res, next) => {
 
         let myRental = await Rental.find({ user })
             .populate("beach", "name")
+            .populate("sportEquipment")
+            .populate("user", "name")
 
         return res.json({
             success: true,
             myRental
+        });
+    }
+
+    catch (err) {
+        return next({
+            status: 400,
+            message: err.message
+        });
+    };
+
+});
+
+//ver todas las reservas de todos los usuarios
+
+RentalRouter.get("/allRental/listOfRental", authAdmin, async (req, res, next) => {
+
+    try {
+
+        const user = req.user.id;
+
+        let listOfRental = await Rental.find()
+            .populate("beach", "name")
+            .populate("sportEquipment")
+            .populate("user", "name")
+
+
+        return res.json({
+            success: true,
+            listOfRental
         });
     }
 
@@ -132,7 +163,7 @@ RentalRouter.get("/myRental/:nuevaReservaId", async (req, res, next) => {
         const user = req.user.id;
         const { nuevaReservaId } = req.params;
 
-        let oneRental = await Rental.findById(nuevaReservaId).populate("beach", "name").populate("sportEquipment");
+        let oneRental = await Rental.findById(nuevaReservaId).populate("beach", "name").populate("sportEquipment").populate("user", "name");
 
         if (!oneRental) {
             return next({
@@ -166,7 +197,7 @@ RentalRouter.delete("/deleteMyRental/:id", async (req, res, next) => {
         const { id } = req.params;
 
         let myRental = await Rental.findById(id);
-        console.log(myRental)
+        
         if (!myRental) {
             return next({
                 status: 403,
@@ -210,7 +241,7 @@ RentalRouter.delete("/deleteMyRental/:id", async (req, res, next) => {
 })
 
 //Comparar reservas por día para devolver el stock cuando pase la fecha de la reserva 
-RentalRouter.put("/allRental", async (req, res, next) => {
+RentalRouter.put("/allRental", authAdmin, async (req, res, next) => {
 
     try {
 

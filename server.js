@@ -1,7 +1,7 @@
 const express= require("express")
 const mongoose =require("mongoose");
 require("dotenv").config();                
-const { errorHandler, checkToken } = require("./middleware"); 
+const { errorHandler, checkToken, authAdmin } = require("./middleware"); 
 const app= express();
 const {DB_URI, PORT} = process.env          //Es lo mismo que poner: const DB_URI= process.env.DB_URI;
 
@@ -30,7 +30,7 @@ app.use(express.urlencoded({extended: true}));
 
 
 app.use("/users", UserRouter);
-app.use("/sports", SportEquipmentRouter);       //Esto es un middleware
+app.use("/sports",checkToken, authAdmin, SportEquipmentRouter);       //Esto es un middleware
 app.use("/beaches", BeachRouter);
 app.use("/rent",  checkToken, RentalRouter);
 

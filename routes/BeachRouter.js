@@ -51,7 +51,7 @@ BeachRouter.get("/find/:id", async (req, res, next) => {
 });
 
 //Añadir equipamiento a una playa                          
-BeachRouter.put("/addEquipment", async (req, res, next) => {
+BeachRouter.put("/addEquipment", checkToken, authAdmin, async (req, res, next) => {
     try {
 
         const { beachId, equipmentId, stock } = req.body;       
@@ -93,7 +93,7 @@ BeachRouter.put("/addEquipment", async (req, res, next) => {
 })
 
 //Añadir stock de equipamiento a una playa
-BeachRouter.put("/addEquipment/stock", async (req, res, next) => {            
+BeachRouter.put("/addEquipment/stock", checkToken, authAdmin, async (req, res, next) => {            
     try {
 
         const { beachId, equipmentId, stock } = req.body;
@@ -130,7 +130,7 @@ BeachRouter.put("/addEquipment/stock", async (req, res, next) => {
 });
 
 //Eliminar stock de equipamiento a una playa
-BeachRouter.put("/removeEquipment/stock", async (req, res, next) => {
+BeachRouter.put("/removeEquipment/stock",checkToken, authAdmin, async (req, res, next) => {
     try {
 
 
@@ -169,7 +169,7 @@ BeachRouter.put("/removeEquipment/stock", async (req, res, next) => {
 
 //Eliminar playa
 
-BeachRouter.delete("/deleteBeach/:id", async (req, res, next) => {
+BeachRouter.delete("/deleteBeach/:id",checkToken, authAdmin, async (req, res, next) => {
     try {
 
 
@@ -200,7 +200,7 @@ BeachRouter.delete("/deleteBeach/:id", async (req, res, next) => {
 
 //Eliminar material concreto de una playa
 
-BeachRouter.put("/removeEquipment/:id", async (req, res, next) => {
+BeachRouter.put("/removeEquipment/:id",checkToken, authAdmin, async (req, res, next) => {
     try {
 
 

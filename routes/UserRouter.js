@@ -3,7 +3,7 @@ const User = require("../models/User");
 const UserRouter = express.Router();
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const { JWT_SECRET, PORT } = process.env;
+const { JWT_SECRET, VERIFICATION } = process.env;
 const { check, oneOf } = require('express-validator');
 const validator = require('validator');
 
@@ -13,11 +13,11 @@ const validator = require('validator');
 //Singup
 UserRouter.post("/singup", async (req, res, next) => {  //  
 
-    try {                                              
+    try {
 
         const { name, surname, email, password } = req.body;
 
-        const findUser = await User.findOne({ email })       
+        const findUser = await User.findOne({ email })
 
         if (findUser) {
             return next({
@@ -67,7 +67,7 @@ UserRouter.post("/singup", async (req, res, next) => {  //
             });
         }
 
-        if (password.length < 6) {                    
+        if (password.length < 6) {
             return next({
                 status: 403,
                 message: "Password too short"
@@ -79,14 +79,15 @@ UserRouter.post("/singup", async (req, res, next) => {  //
             surname,
             email,
             password,
+            resetToken: "",
             role: 0
         });
 
         let newUser = await user.save()
 
-         
 
-        return res.json({                                                                   
+
+        return res.json({
             success: true,
             user: newUser
         })
@@ -100,15 +101,15 @@ UserRouter.post("/singup", async (req, res, next) => {  //
 });
 
 
-// //Singup Admin
+//Singup Admin
 
 UserRouter.post("/singup/newAdmin", async (req, res, next) => {  //  
 
-    try {                                              
+    try {
 
         const { name, surname, email, password } = req.body;
 
-        const findAdmin = await User.findOne({ email })       
+        const findAdmin = await User.findOne({ email })
 
         if (findAdmin) {
             return next({
@@ -158,7 +159,7 @@ UserRouter.post("/singup/newAdmin", async (req, res, next) => {  //
             });
         }
 
-        if (password.length < 6) {                    
+        if (password.length < 6) {
             return next({
                 status: 403,
                 message: "Password too short"
@@ -173,9 +174,9 @@ UserRouter.post("/singup/newAdmin", async (req, res, next) => {  //
             role: 1
         });
 
-        let newAdmin = await admin.save()         
+        let newAdmin = await admin.save()
 
-        return res.json({                                                                   
+        return res.json({
             success: true,
             admin: newAdmin
         })
@@ -193,32 +194,32 @@ UserRouter.post("/singup/newAdmin", async (req, res, next) => {  //
 UserRouter.post("/login", async (req, res, next) => {
     try {
 
-        const { email, password } = req.body;                 
+        const { email, password } = req.body;
 
-        const user = await User.findOne({ email })            
+        const user = await User.findOne({ email })
 
         if (!user) {
             return next({
                 status: 403,
-                message: "Wrong credentials (user)"                            
+                message: "Wrong credentials (user)"
             });
-        }                                                             
+        }
 
-        const match = await bcrypt.compare(password, user.password)   
+        const match = await bcrypt.compare(password, user.password)
 
-        if (!match) {                                               
+        if (!match) {
             return next({
                 status: 403,
                 message: "wrong credentials (password)"
             })
         }
 
-        
 
-        const token = jwt.sign({ id: user._id }, JWT_SECRET, { expiresIn: "24h" });   
-        
 
-        return res.json({                                                                
+        const token = jwt.sign({ id: user._id }, JWT_SECRET, { expiresIn: "24h" });
+
+
+        return res.json({
             success: true,
             token
         });
@@ -232,6 +233,162 @@ UserRouter.post("/login", async (req, res, next) => {
     };
 
 
+});
+
+//Modificar contraseña
+
+UserRouter.put("/changePassword", async (req, res, next) => {
+    try {
+
+        const { password } = req.body
+        const user = await User.findById(req.user.id)
+
+        const samePassword = await bcrypt.compare(password, user.password);
+
+        if (samePassword) {
+            return res.status(400).json({
+                message: "Por favor, introduce una nueva contraseña diferente a la actual."
+            });
+        }
+
+
+        if (!password)
+            return res.status(400).json({
+                message: "Introduce tu contraseña, por favor"
+            })
+
+        if (password.length < 6)
+            return res.status(400).json({
+                message: "La contraseña debe tener minimo 6 caracteres"
+            })
+
+        const salt = await bcrypt.genSalt(10);
+        user.password = await bcrypt.hash(req.body.password, salt);
+
+        await user.save()
+        res.json({
+            message: "Contraseña actualizada correctamente"
+        })
+
+    } catch (err) {
+        return next({
+            status: 403,
+            message: err.message
+
+        }); 
+    };
+});
+
+//Contraseña olvidada, mandar email para reestablecer una contraseña
+
+UserRouter.put("/forgot-Password", async (req, res, next) => {
+    try {
+
+        const { email } = req.body;
+
+        if (!email) {
+            return next({
+                status: 403,
+                message: "email is required"
+            });
+        }
+
+
+        const user = await User.findOne({ email })
+
+        if (!user) {
+            return next({
+                status: 403,
+                message: "Wrong credentials (user)"
+            });
+        }
+
+        let emailStatus = "OK";
+
+        const token = jwt.sign({ userId: user._id }, JWT_SECRET, { expiresIn: "15m" });
+
+        let verificationLink = `http://localhost:5000/new-password/${token}`
+
+        user.resetToken = token;
+
+        //Envío de email al usuario
+
+        await user.save()
+        res.json({
+            success: true,
+            message: "Check your email for a link to reset your password.",
+            info: emailStatus,
+            test: verificationLink
+
+        })
+
+
+    } catch (err) {
+        return next({
+            status: 403,
+            message: err.message
+
+        });
+    }
+
+})
+
+//Crear nueva contraseña
+UserRouter.put("/new-password", async (req, res, next) => {
+    try {
+
+        const { newPassword } = req.body;
+        const resetToken = req.headers["authorization"]
+
+        if(resetToken && resetToken.startsWith("Bearer ")) {
+            resetToken = resetToken.slice(7, resetToken.length);
+        }
+
+        if (!resetToken && !newPassword) {
+            return next({
+                status: 400,
+                message: "All the fields are required"
+
+            });
+        };
+
+
+        // const user = await User.find();
+
+        jwt.verify(resetToken, process.env.JWT_SECRET_RESET, (err) => {               //Verificar el token: pasamos el token, la key abierta y decoded será el objeto que se le pasa como primer parametro al token (id en este caso)
+            if (err) {
+                return res.status(401).json({                                       //Si intentamos entrar otro día con ese token, o entrar con otra sintaxis, da error
+
+                    success: false,
+                    message: "Token is not valid"
+                });
+            };
+        });
+
+        user = await User.finOneOrFail({ where: { resetToken } });
+
+        user.password = newPassword;
+        const validationOps = { validationError: { target: false, value: false } };
+        const errors = await validator(user, validationOps)
+
+        if (errors.length > 0) {
+            return next({
+                status: 400,
+                message: errors
+            });
+        };
+
+
+        await user.password.save();
+        await user.save();
+
+    } catch (err) {
+        return next({
+            status: 403,
+            message: err.message
+
+        });
+    };
 });
 
 
