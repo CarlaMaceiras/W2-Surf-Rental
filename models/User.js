@@ -34,7 +34,7 @@ const UserSchema = new mongoose.Schema({
 
 //Encriptar contraseña para que no se vea en la base de datos
 UserSchema.pre("save", function (next) {                                    
-    if (!this.isNew || !this.isModified("password")) {              
+    if (!this.isNew ) {              
         return next();
     }
     bcrypt.genSalt(10, (err, salt) => {                             
@@ -51,3 +51,6 @@ UserSchema.pre("save", function (next) {
 });
 
 module.exports = mongoose.model("User", UserSchema);
+
+
+// || !this.isModified("password")

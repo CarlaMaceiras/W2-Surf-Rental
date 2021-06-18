@@ -1,9 +1,23 @@
 const mongoose= require("mongoose");
 
 const SportEquipmentSchema= new mongoose.Schema({
-    model: String, 
-    size: Number,
-    level: String,
+    model: {
+        type: String,
+        required: true 
+    },
+    size: {
+        type: Number,
+        required: true
+    },
+    level: {
+        type: String,
+        required: true
+    },
+    file: {
+        type: Object,
+        required: true
+    }
+
   
 });
 

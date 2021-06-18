@@ -1,5 +1,5 @@
 const express = require("express");
-const { errorHandler, authAdmin } = require("../middleware");
+const { checkToken, authAdmin } = require("../middleware");
 const Rental = require("../models/Rental");
 const RentalRouter = express.Router();
 const User = require("../models/User");
@@ -241,7 +241,7 @@ RentalRouter.delete("/deleteMyRental/:id", async (req, res, next) => {
 })
 
 //Comparar reservas por día para devolver el stock cuando pase la fecha de la reserva 
-RentalRouter.put("/allRental", authAdmin, async (req, res, next) => {
+RentalRouter.put("/allRental", checkToken, authAdmin, async (req, res, next) => {
 
     try {
 

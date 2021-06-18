@@ -3,7 +3,7 @@ const User = require("../models/User");
 const UserRouter = express.Router();
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const { JWT_SECRET, VERIFICATION, JWT_SECRET_RESET} = process.env;
+const { JWT_SECRET, VERIFICATION, JWT_SECRET_RESET } = process.env;
 const { check, oneOf } = require('express-validator');
 const validator = require('validator');
 const { checkToken } = require("../middleware");
@@ -275,7 +275,7 @@ UserRouter.put("/changePassword", async (req, res, next) => {
             status: 403,
             message: err.message
 
-        }); 
+        });
     };
 });
 
@@ -305,7 +305,7 @@ UserRouter.put("/forgot-Password", async (req, res, next) => {
 
         let emailStatus = "OK";
 
-        const token = jwt.sign({ userId: user._id }, JWT_SECRET_RESET, { expiresIn: "15m" });
+        const token = jwt.sign({ id: user._id }, JWT_SECRET_RESET, { expiresIn: "15m" });
 
         let verificationLink = `http://localhost:5000/new-password/${token}`
 
@@ -333,87 +333,79 @@ UserRouter.put("/forgot-Password", async (req, res, next) => {
 })
 
 // Crear nueva contraseña
-// UserRouter.put("/new-password", async (req, res, next) => {
-//     try {
+UserRouter.put("/new-password", async (req, res, next) => {
+    try {
 
-//         const { newPassword } = req.body;
-//         let resetToken = req.headers ["x-access-token"] || req.headers["authorization"];
+        const { newPassword } = req.body;
+        let resetToken = req.headers["x-access-token"] || req.headers["authorization"];
 
-//         if(resetToken && resetToken.startsWith("Bearer ")) {
-//             resetToken = resetToken.slice(7, resetToken.length);
-//         }
+        if (resetToken && resetToken.startsWith("Bearer ")) {
+            resetToken = resetToken.slice(7, resetToken.length);
+        }
 
-//         if (!resetToken && !newPassword) {
-//             return next({
-//                 status: 400,
-//                 message: "All the fields are required"
+        if (!resetToken && !newPassword) {
+            return next({
+                status: 400,
+                message: "All the fields are required"
 
-//             });
-//         };
+            });
+        };
 
-//         console.log(resetToken);
-    
-
-//         jwt.verify(resetToken, process.env.JWT_SECRET_RESET, (err, decoded) => {               //Verificar el token: pasamos el token, la key abierta y decoded será el objeto que se le pasa como primer parametro al token (id en este caso)
-//             if (err) {
-//                 return res.status(401).json({                                       //Si intentamos entrar otro día con ese token, o entrar con otra sintaxis, da error
-
-//                     success: false,
-//                     message: "Token is not valid"
-//                 });
-//             };
-//             req.user = decoded;
-//             next();
-//         });
-
-//     } catch (err) {
-//         return next({
-//             status: 403,
-//             message: "primera parte"
-
-//         });
-//     };
-
-//     try{
-
-//         const user = await User.findById(req.user.id)
-
-//         const samePassword = await bcrypt.compare(newPassword, user.password);
-
-//         if (samePassword) {
-//             return res.status(400).json({
-//                 message: "Por favor, introduce una nueva contraseña diferente a la actual."
-//             });
-//         }
+        console.log("token: ", resetToken);
 
 
-//         if (!newPassword)
-//             return res.status(400).json({
-//                 message: "Introduce tu contraseña, por favor"
-//             })
+        jwt.verify(resetToken, process.env.JWT_SECRET_RESET, (err, decoded) => {               //Verificar el token: pasamos el token, la key abierta y decoded será el objeto que se le pasa como primer parametro al token (id en este caso)
+            if (err) {
+                return res.status(401).json({                                       //Si intentamos entrar otro día con ese token, o entrar con otra sintaxis, da error
 
-//         if (newPassword.length < 6)
-//             return res.status(400).json({
-//                 message: "La contraseña debe tener minimo 6 caracteres"
-//             })
+                    success: false,
+                    message: "Token is not valid"
+                });
+            };
+            req.user = decoded;
+        });
 
-//         const salt = await bcrypt.genSalt(10);
-//         user.password = await bcrypt.hash(req.body.password, salt);
+       
 
-//         await user.save()
-//         res.json({
-//             message: "Contraseña actualizada correctamente"
-//         });
+        const user = await User.findById(req.user.id)
+
+        if (!newPassword)
+            return res.status(400).json({
+                message: "Introduce tu contraseña, por favor"
+            })
+
+        if (newPassword.length < 6)
+            return res.status(400).json({
+                message: "La contraseña debe tener minimo 6 caracteres"
+            })
 
 
-//     } catch (err) {
-//         return next({
-//             status: 403,
-//             message: "tercera parte"
+        const samePassword = await bcrypt.compare(newPassword, user.password);
 
-//         });
-//     };
-// });
+        if (samePassword) {
+            return res.status(400).json({
+                message: "Por favor, introduce una nueva contraseña diferente a la actual."
+            });
+        }
+
+        const salt = await bcrypt.genSalt(10);
+        user.password = await bcrypt.hash(newPassword, salt);
+
+        await user.save()
+        res.json({
+            success: true,
+            message: "Contraseña actualizada correctamente"
+        });
+
+
+    } catch (err) {
+        return next({
+            status: 403,
+            message: err.message
+
+        });
+    };
+});
 
 
 

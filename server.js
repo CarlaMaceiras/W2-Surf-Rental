@@ -4,6 +4,7 @@ require("dotenv").config();
 const { errorHandler, checkToken, authAdmin } = require("./middleware"); 
 const app= express();
 const {DB_URI, PORT} = process.env          //Es lo mismo que poner: const DB_URI= process.env.DB_URI;
+const fileUpload = require("express-fileupload"); 
 
 //Importar router
 
@@ -27,6 +28,7 @@ mongoose.connect(DB_URI , { useUnifiedTopology: true, useNewUrlParser: true, use
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
+app.use(fileUpload({useTempFiles:true}));
 
 
 app.use("/users", UserRouter);
