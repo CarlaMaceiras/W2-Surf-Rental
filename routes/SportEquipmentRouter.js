@@ -47,7 +47,7 @@ SportEquipmentRouter.post("/", async (req, res, next) => {
             });
         }
 
-        const findEquipment = await SportEquipment.findOne({ model }, { size }, { level })       //Si el material existe, nos avisa de que ya existe     
+        const findEquipment = await SportEquipment.findOne({ model } )       //Si el material existe, nos avisa de que ya existe     
 
         if (findEquipment) {
             return next({

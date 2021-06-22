@@ -1,8 +1,18 @@
 const mongoose= require("mongoose");
 
 const BeachSchema= new mongoose.Schema({
-    name: String, 
-    location: String,
+    name: {
+      type: String,
+      required: true 
+    }, 
+    location:{
+      type: String,
+      required: true
+    },
+    file:{
+      type: Object,
+      required: true
+    },
     equipmentAvailable: [{
         sportEquipment: {
           type: mongoose.Schema.Types.ObjectId,
