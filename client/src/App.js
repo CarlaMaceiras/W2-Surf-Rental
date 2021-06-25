@@ -1,29 +1,47 @@
-import logo from './logo.svg';
 import './App.css';
-import Beach from './components/Beachs';
+import Beaches  from "./components/Beaches";
+import Navbar from "./components/NavBar";
+import Beach from './components/Beach';
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch
+} from "react-router-dom";
+
 
 function App() {
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <h2 className="test">Hola</h2>
-        <Beach name="Nemiña" />
-        
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  
+    <Router>
+      <div className="App">
+
+        <Navbar />
+  
+        <Switch>
+
+          <Route path="/" exact={true}>   {/*Si no se pone exact, no entra en las rutas que tengas algo después de "/"*/}
+            <h2>Inicio</h2>
+          </Route>
+
+          <Route path="/beaches" exact={true}>
+            <Beaches />
+          </Route>
+
+          <Route path="/beaches/:beachId">
+            <Beach />
+          </Route>
+
+          {/* <Route path="/sportEquipment/:equipmentId">
+            <SportEquipment />
+          </Route> */}
+
+        </Switch>
+       
+      </div>
+    </Router>
   );
-}
+     
+};
 
 export default App;
