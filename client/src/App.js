@@ -1,12 +1,15 @@
 import './App.css';
 import Beaches  from "./components/Beaches";
 import Navbar from "./components/NavBar";
-import Beach from './components/Beach';
+import SportEquipment from "./components/SportEquipment";
+import Beach from './Pages/Beach';
 import {
   BrowserRouter as Router,
   Route,
   Switch
 } from "react-router-dom";
+import CreateNewBeach from './Pages/CreateNewBeach';
+
 
 
 function App() {
@@ -31,10 +34,14 @@ function App() {
           <Route path="/beaches/:beachId">
             <Beach />
           </Route>
+          
+          <Route path="/beaches/newBeach">
+            <CreateNewBeach />
+          </Route>
 
-          {/* <Route path="/sportEquipment/:equipmentId">
+          <Route path="/sports" exact={true}>
             <SportEquipment />
-          </Route> */}
+          </Route> 
 
         </Switch>
        

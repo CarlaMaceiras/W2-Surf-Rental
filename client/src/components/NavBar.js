@@ -1,19 +1,32 @@
-import { Link } from "react-router-dom"
+import React, { useState } from 'react';
+import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
 
-const NavBar = () => {
+const NavBar = (props) => {
+const [collapsed, setCollapsed] = useState(true);
+
+   const toggleNavbar = () => setCollapsed(!collapsed);
+
     return (
-        <nav>
-            <ul>
-                <li>
-                    <Link to="/">HOME</Link>                  
-                </li>
-
-                <li>
-                    <Link to="/beaches">BEACH</Link>
-                </li>
-
-            </ul>
-        </nav>
+        <div>
+      <Navbar color="white" light>
+        <NavbarBrand href="/" className="w2">W² Surf Rental</NavbarBrand>
+        <NavbarToggler onClick={toggleNavbar} className="mr-2" />
+        <Collapse isOpen={!collapsed} navbar>
+          <Nav navbar>
+            <NavItem>
+              <NavLink href="/">Home</NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink href="/beaches">Playas</NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink href="/sports">Material</NavLink>
+            </NavItem>
+          </Nav>
+        </Collapse>
+      </Navbar>
+    </div>
+       
     );
 };
 

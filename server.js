@@ -1,11 +1,12 @@
 const express= require("express")
 const mongoose =require("mongoose");
 const cors= require("cors");
+const fileUpload = require("express-fileupload"); 
 require("dotenv").config();                
 const { errorHandler, checkToken, authAdmin } = require("./middleware"); 
 const app= express();
 const {DB_URI, PORT} = process.env          //Es lo mismo que poner: const DB_URI= process.env.DB_URI;
-const fileUpload = require("express-fileupload"); 
+
 
 //Importar router
 
@@ -33,9 +34,11 @@ app.use(fileUpload({useTempFiles:true}));
 
 
 app.use("/users", UserRouter);
-app.use("/sports",checkToken, authAdmin, SportEquipmentRouter);       //Esto es un middleware
+app.use("/sports", SportEquipmentRouter);       //Esto es un middleware
 app.use("/beaches", BeachRouter);
 app.use("/rent",  checkToken, RentalRouter);
+
+//app.use("/sports",checkToken, authAdmin, SportEquipmentRouter);
 
 
 app.use(errorHandler);  //se pone aquí abajo porque los middelwares "expess.json y express.urlencoded" suceden antes de llegar a la ruta. Después entra en los get, put, ets y los error van después, suceden después
