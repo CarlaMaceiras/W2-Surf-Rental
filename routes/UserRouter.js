@@ -11,8 +11,8 @@ const { checkToken } = require("../middleware");
 
 
 
-//Singup
-UserRouter.post("/singup", async (req, res, next) => {  //  
+//Signup
+UserRouter.post("/signup", async (req, res, next) => {  //  
 
     try {
 
@@ -101,9 +101,9 @@ UserRouter.post("/singup", async (req, res, next) => {  //
 });
 
 
-//Singup Admin
+//Signup Admin
 
-UserRouter.post("/singup/newAdmin", async (req, res, next) => {  //  
+UserRouter.post("/signup/newAdmin", async (req, res, next) => {  //  
 
     try {
 

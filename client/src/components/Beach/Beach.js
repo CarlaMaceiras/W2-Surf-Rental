@@ -1,7 +1,7 @@
 import React,{ useEffect, useState } from 'react';
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import Equipment from '../components/Equipment';
+import Equipment from '../SportEquipment/Equipment'
 
 
 
@@ -12,7 +12,7 @@ const Beach = () => {
 
     useEffect(() => {
         const getBeach = async () => {
-            const response = await axios(`http://localhost:5000/beaches/find/${beachId}`)
+            const response = await axios.get(`http://localhost:5000/beaches/find/${beachId}`)
             setBeach(response.data.beach);
         };
         getBeach();

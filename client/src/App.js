@@ -1,14 +1,17 @@
 import './App.css';
-import Beaches  from "./components/Beaches";
-import Navbar from "./components/NavBar";
-import SportEquipment from "./components/SportEquipment";
-import Beach from './Pages/Beach';
+import Beaches  from "./components/Beach/Beaches";
+import Navbar from "./components/Header/NavBar";
+import SportEquipment from "./components/SportEquipment/SportEquipment";
+import Beach from './components/Beach/Beach';
 import {
   BrowserRouter as Router,
   Route,
   Switch
 } from "react-router-dom";
-import CreateNewBeach from './Pages/CreateNewBeach';
+import CreateNewBeach from './components/Beach/CreateNewBeach';
+import NewRental from './components/Rental/NewRental';
+import Signup from './components/User/signup/Signup';
+import Login from './components/User/login/Login';
 
 
 
@@ -27,6 +30,18 @@ function App() {
             <h2>Inicio</h2>
           </Route>
 
+          <Route path="/users/signup">
+            <Signup />
+          </Route>
+
+          <Route path="/users/login/:beachId/:equipmentId">
+            <Login />
+          </Route>
+
+          <Route path="/users/login">
+            <Login />
+          </Route>
+
           <Route path="/beaches" exact={true}>
             <Beaches />
           </Route>
@@ -42,6 +57,10 @@ function App() {
           <Route path="/sports" exact={true}>
             <SportEquipment />
           </Route> 
+
+          <Route path="/rent/newRental/:beachId/:equipmentId">
+            <NewRental />
+          </Route>
 
         </Switch>
        

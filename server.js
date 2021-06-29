@@ -34,7 +34,7 @@ app.use(fileUpload({useTempFiles:true}));
 
 
 app.use("/users", UserRouter);
-app.use("/sports", SportEquipmentRouter);       //Esto es un middleware
+app.use("/sports", checkToken, SportEquipmentRouter);       //Esto es un middleware
 app.use("/beaches", BeachRouter);
 app.use("/rent",  checkToken, RentalRouter);
 

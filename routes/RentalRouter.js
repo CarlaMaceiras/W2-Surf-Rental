@@ -62,7 +62,7 @@ RentalRouter.post("/newRental/:beachId", async (req, res, next) => {
             })
         };
 
-        material.stock -= quantity;
+        // material.stock -= quantity;
 
         let fecha = new Date(date);
         fecha.setHours(fecha.getHours() + 2);
@@ -241,11 +241,9 @@ RentalRouter.delete("/deleteMyRental/:id", async (req, res, next) => {
 })
 
 //Comparar reservas por día para devolver el stock cuando pase la fecha de la reserva 
-RentalRouter.put("/allRental", checkToken, authAdmin, async (req, res, next) => {
+RentalRouter.put("/allRental", async (req, res, next) => {
 
     try {
-
-        const user = req.user.id;
 
         let allRental = await Rental.find({ status: "reservado" });
 
@@ -272,7 +270,7 @@ RentalRouter.put("/allRental", checkToken, authAdmin, async (req, res, next) => 
                 });
 
 
-                material.stock += resetRental.quantity
+                // material.stock += resetRental.quantity
                 resetRental.status = "libre";
 
                 await resetRental.save();
