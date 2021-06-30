@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect, useState } from 'react';
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { Button } from 'reactstrap';
+
 
 
 const Beaches = () => {
@@ -30,7 +30,7 @@ const Beaches = () => {
               <Link key={beach._id} to={`/beaches/${beach._id}`}> 
               <p>{beach.name}</p>
               <img src= {beach.file.url} alt="logo"/>
-              <Button color="secondary" size="lg" block>Seleccionar</Button>
+              <button color="secondary" size="lg" block>Seleccionar</button>
               </Link>            
             )
           })}

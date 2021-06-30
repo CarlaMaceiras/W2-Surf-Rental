@@ -3,36 +3,52 @@ import { useParams, useHistory } from "react-router-dom";
 import axios from "axios";
 
 const NewRental = () => {
-    const {beachId, equipmentId} = useParams();
+    const { beachId, equipmentId, date, quantity } = useParams();
+    const body = {
+        equipmentId: `${equipmentId}`,
+        date: `${date}`,
+        quantity: `${quantity}`
+        
+    }
     
-    const {user, setUser } = useState();
+    const [rent, setRent] = useState();
+
 
     let history = useHistory();
 
     useEffect( () => {
-        const getUser = async () => {
+        const getRent = async () => {
             try {
                 const token = localStorage.getItem("w2_token");
-                const response = await axios.post(`http://localhost:5000/rent/newRental/${beachId}`, 
+                const response = await axios.post(`http://localhost:5000/rent/newRental/${beachId}`, body, 
+                
                 {
                     headers: {
                         "Authorization": token
                     }
                 })
                 console.log(response)
-                setUser(response.data.user)
+                setRent(response.data)
+                
             }
             catch (err) {
                 console.error(err.response.data);
                 if(err.response.status === 401){
                   localStorage.removeItem("w2_token");
-                  history.pushState("/login")
+                  history.push("/users/login")
                 }
             }
             
         };
-        getUser();
-    }, [beachId]);
+        getRent();
+        
+    }, []);
+
+    return (
+        <div>
+            <img />
+        </div>
+    )
 }
 
 

@@ -28,7 +28,7 @@ const SportEquipment = () => {
           console.error(err.response.data);
           if(err.response.status === 401){
             localStorage.removeItem("w2_token");
-            history.pushState("/login")
+            history.pushState("/users/login")
           }
         }
       
