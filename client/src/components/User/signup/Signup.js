@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import { useHistory } from 'react-router-dom';
 
 
@@ -45,37 +44,40 @@ function Signup(){
 
 
   return (
-    <div className= "card col-12 col-lg-4 login-card mt-2 hv-center">
-        <Form>
+    
 
-          <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
-            <Label for="examplePassword">Nombre</Label>
-            <Input type="text" name="name" id="userName" placeholder="" value= {name} onChange= {(e) => setName(e.target.value)}/>  {/* función que llama a setEmail. e= (event del onChange) que nos coge el valor del imput. target (es el imput completo) */}
-          </FormGroup>
-
-          <FormGroup>
-            <Label for="exampleEmail">Apellidos</Label>
-            <Input type="text" name="surname" id="userSurname" placeholder="" value= {surname} onChange= {(e) => setSurname(e.target.value)}/>
-          </FormGroup>
-
-          <FormGroup>
-            <Label for="exampleEmail">Email</Label>
-            <Input type="email" name="email" id="exampleEmail" placeholder="" value= {email} onChange= {(e) => setEmail(e.target.value)}/>
-          </FormGroup>
-
-          <FormGroup>
-            <Label for="examplePassword">Password</Label>
-            <Input type="password" name="password" id="examplePassword" placeholder="" value= {password} onChange= {(e) => setPassword(e.target.value)}/>
-          </FormGroup>
-
-          <Button type="submit" className="btn btn-primary" onClick= {handleClick}>Enviar</Button>
-
-      </Form>
-
-      <div className="alert alert-success mt-2" style={{ display: successMessage ? 'block' : 'none' }} role="alert">
-        {successMessage}
+  <div className= "card col-12 col-lg-4 login-card mt-2 hv-center">
+    <form>
+      
+      <div class="mb-3">
+        <label for="exampleInputName" class="form-label">Nombre</label>
+        <input type="text" class="form-control" id="exampleInputName"  value= {name} onChange= {(e) => setName(e.target.value)}/>    {/* función que llama a setEmail. e= (event del onChange) que nos coge el valor del imput. target (es el imput completo) */}
       </div>
+
+      <div class="mb-3">
+        <label for="exampleInputSurname" class="form-label">Apellidos</label>
+        <input type="text" class="form-control" id="exampleInputSurname"  value= {surname} onChange= {(e) => setSurname(e.target.value)}/> 
+      </div>
+
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value= {email} onChange= {(e) => setEmail(e.target.value)}/> 
+      </div>
+
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" value= {password} onChange= {(e) => setPassword(e.target.value)}/>
+      </div>
+      
+      <button type="submit" class="btn btn-primary" onClick= {handleClick}>Enviar</button>
+
+    </form>
+
+    <div className="alert alert-success mt-2" style={{ display: successMessage ? 'block' : 'none' }} role="alert">
+      {successMessage}
     </div>
+
+  </div>
   )
 }
 

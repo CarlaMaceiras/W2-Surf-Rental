@@ -1,13 +1,10 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
-import { useHistory, useParams } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 function Login(){
 
     let history = useHistory();
-
-    const { beachId, equipmentId } = useParams();
 
     const [ email, setEmail ] = useState("");
     const [password, setPassword ] = useState("");
@@ -23,14 +20,9 @@ function Login(){
         setSuccessMessage("Login correcto");
         localStorage.setItem("w2_token", response.data.token)
         setTimeout(() => {
-
-            if (!beachId || !equipmentId) {
-                history.push("/beaches");
-            }
-            else {
-                history.push("/rent/newRental/:beachId/:equipmentId");
-            }
-         
+  
+          history.push("/beaches");
+     
         }, 2000);
         
       }
@@ -40,33 +32,27 @@ function Login(){
       }
     };
   
-  
-  
-  
-  
     return (
       <div className= "card col-12 col-lg-4 login-card mt-2 hv-center">
-          <Form>
-  
-            <FormGroup>
-              <Label for="exampleEmail">Email</Label>
-              <Input type="email" name="email" id="exampleEmail" placeholder="" value= {email} onChange= {(e) => setEmail(e.target.value)}/>
-            </FormGroup>
-  
-            <FormGroup>
-              <Label for="examplePassword">Password</Label>
-              <Input type="password" name="password" id="examplePassword" placeholder="" value= {password} onChange= {(e) => setPassword(e.target.value)}/>
-            </FormGroup>
-  
-            <Button type="submit" className="btn btn-primary" onClick= {handleClick}>Enviar</Button>
-  
-        </Form>
+        <form>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value= {email} onChange= {(e) => setEmail(e.target.value)}/> 
+            
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" value= {password} onChange= {(e) => setPassword(e.target.value)}/>
+          </div>
+          
+          <button type="submit" class="btn btn-primary" onClick= {handleClick}>Enviar</button>
+        </form>
   
         <div className="alert alert-success mt-2" style={{ display: successMessage ? 'block' : 'none' }} role="alert">
           {successMessage}
         </div>
       </div>
-    )
-  }
+    );
+};
   
   export default Login;

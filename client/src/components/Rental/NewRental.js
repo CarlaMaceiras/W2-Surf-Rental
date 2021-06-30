@@ -1,26 +1,39 @@
-// import React,{ useEffect, useState } from 'react';
-// import { useParams } from "react-router-dom";
-// import axios from "axios";
+import React,{ useEffect, useState } from 'react';
+import { useParams, useHistory } from "react-router-dom";
+import axios from "axios";
 
-// const NewRental = () => {
-// //     const {beachId} = useParams;
-// //     const {user, setUser } = useState();
+const NewRental = () => {
+    const {beachId, equipmentId} = useParams();
+    
+    const {user, setUser } = useState();
 
-// //     useEffect( () => {
-// //         const getUser = async () => {
-// //             const response = await axios.get(`http://localhost:5000/rent/newRental/${beachId}`,
-// //             {
-// //                 headers: {
-// //                     Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwYzlmOTI2NmUyZWEyMWZiNGYyNDBhYSIsImlhdCI6MTYyNDk1NzMxMSwiZXhwIjoxNjI1MDQzNzExfQ.7H9o3O9nee3rhDl2xIfldvseeCkLEXaXFPkKeEMQkEc"
-// //                 }
-// //             })
-// //             console.log(response)
-// //             setUser(response.data.user)
+    let history = useHistory();
+
+    useEffect( () => {
+        const getUser = async () => {
+            try {
+                const token = localStorage.getItem("w2_token");
+                const response = await axios.post(`http://localhost:5000/rent/newRental/${beachId}`, 
+                {
+                    headers: {
+                        "Authorization": token
+                    }
+                })
+                console.log(response)
+                setUser(response.data.user)
+            }
+            catch (err) {
+                console.error(err.response.data);
+                if(err.response.status === 401){
+                  localStorage.removeItem("w2_token");
+                  history.pushState("/login")
+                }
+            }
             
-// //         };
-// //         getUser();
-// //     }, [beachId]);
-// // }
+        };
+        getUser();
+    }, [beachId]);
+}
 
 
-// export default NewRental;
+export default NewRental;

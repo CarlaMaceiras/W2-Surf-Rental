@@ -34,10 +34,6 @@ function App() {
             <Signup />
           </Route>
 
-          <Route path="/users/login/:beachId/:equipmentId">
-            <Login />
-          </Route>
-
           <Route path="/users/login">
             <Login />
           </Route>
@@ -58,7 +54,7 @@ function App() {
             <SportEquipment />
           </Route> 
 
-          <Route path="/rent/newRental/:beachId/:equipmentId">
+          <Route path="/rent/newRental/:beachId/:equipmentId/:date">
             <NewRental />
           </Route>
 
