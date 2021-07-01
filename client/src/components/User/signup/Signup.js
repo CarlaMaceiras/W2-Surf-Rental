@@ -29,7 +29,7 @@ function Signup(){
       console.log(response);
       setSuccessMessage("Usuario creado correctamente");
       setTimeout(() => {
-        history.push("/login");
+        history.push("/users/login");
       }, 2000);
       
     }
@@ -69,7 +69,7 @@ function Signup(){
         <input type="password" class="form-control" id="exampleInputPassword1" value= {password} onChange= {(e) => setPassword(e.target.value)}/>
       </div>
       
-      <button type="submit" class="btn btn-primary" onClick= {handleClick}>Enviar</button>
+      <button type="submit" class="btn btn-primary" onClick= {handleClick}>Registrarse</button>
 
     </form>
 

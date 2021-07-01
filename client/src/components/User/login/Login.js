@@ -45,7 +45,7 @@ function Login(){
             <input type="password" class="form-control" id="exampleInputPassword1" value= {password} onChange= {(e) => setPassword(e.target.value)}/>
           </div>
           
-          <button type="submit" class="btn btn-primary" onClick= {handleClick}>Enviar</button>
+          <button type="submit" class="btn btn-primary" onClick= {handleClick}>Log in</button>
         </form>
   
         <div className="alert alert-success mt-2" style={{ display: successMessage ? 'block' : 'none' }} role="alert">

@@ -39,7 +39,7 @@ const MyRent = () => {
             {myRent.map(oneRent => {
                 return (
                     
-                    <div>    
+                    <div key ={oneRent._id}>    
                         <img src= {oneRent.sportEquipment.file.url} alt="logo"/>
                         
                         <p>{oneRent.beach.name}</p>

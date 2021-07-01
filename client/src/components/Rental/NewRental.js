@@ -62,6 +62,7 @@ const NewRental = () => {
             })
             console.log(response)
             setRent(response.data)
+            history.push("/rent/myRent")
             
         }
         catch (err) {
@@ -80,9 +81,9 @@ const NewRental = () => {
         <div>
             <div className="info_box">
                 <div className="subinfo_box">
-                    {/* <div>
-                     <img src= {rent.file.url} alt="logo"/>
-                    </div> */}
+                    
+                    <img src={rent.file.url} alt="logo"/>
+                    
 
                     <div className="info_equipment">
                         <div>
