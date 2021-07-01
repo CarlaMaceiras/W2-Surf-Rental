@@ -128,6 +128,30 @@ SportEquipmentRouter.get("/", async (req, res, next) => {
 
 });
 
+//coger solo un material (sin estar asociado a una playa)
+SportEquipmentRouter.get("/oneEquipment/:id", async (req, res, next) => {
+    try {
+
+        const { id } = req.params
+
+        let material = await SportEquipment.findById(id).populate("equipmentAvailable.sportEquipment");
+        return res.json({
+            success: true,
+            material
+        });
+
+    } catch (err) {
+        return next({
+            status: 403,
+            message: err.message
+
+        });
+    };
+
+});
+
+//Eliminar un material
+
 SportEquipmentRouter.delete("/deleteEquipment/:id", async (req, res, next) => {
     try {
 

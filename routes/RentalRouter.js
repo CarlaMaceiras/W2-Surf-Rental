@@ -16,6 +16,8 @@ RentalRouter.post("/newRental/:beachId", async (req, res, next) => {
         const { beachId } = req.params;
         const { equipmentId, quantity, date } = req.body;
 
+        console.log(req.body)
+
         if (!equipmentId || !quantity || !date) {
             return next({
                 status: 403,
@@ -34,7 +36,7 @@ RentalRouter.post("/newRental/:beachId", async (req, res, next) => {
         };
 
         let material = playa.equipmentAvailable.find(equipment => {
-            return equipment.sportEquipment == equipmentId
+            return equipment.sportEquipment.equals(equipmentId)
         });
 
         if (!material) {
@@ -65,7 +67,7 @@ RentalRouter.post("/newRental/:beachId", async (req, res, next) => {
         // material.stock -= quantity;
 
         let fecha = new Date(date);
-        fecha.setHours(fecha.getHours() + 2);
+        // fecha.setHours(fecha.getHours() + 2);
 
         const crearReserva = new Rental({
             user,

@@ -12,6 +12,7 @@ import CreateNewBeach from './components/Beach/CreateNewBeach';
 import NewRental from './components/Rental/NewRental';
 import Signup from './components/User/signup/Signup';
 import Login from './components/User/login/Login';
+import MyRent from './components/Rental/MyRent';
 
 
 
@@ -54,8 +55,12 @@ function App() {
             <SportEquipment />
           </Route> 
 
-          <Route path="/rent/newRental/:beachId/:equipmentId/:date">
+          <Route path="/rent/newRental/:beachId/:equipmentId/:date/:quantity">
             <NewRental />
+          </Route>
+
+          <Route path="/rent/myRent">
+            <MyRent />
           </Route>
 
         </Switch>

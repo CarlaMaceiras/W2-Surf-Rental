@@ -4,9 +4,6 @@ import axios from "axios";
 import Equipment from '../SportEquipment/Equipment'
 
 
-
-
-
 const Beach = () => {
     const {beachId} = useParams();
     const [oneBeach, setBeach] = useState();
@@ -45,18 +42,19 @@ const Beach = () => {
                     <p >{oneBeach.location}</p>
                     <img src= {oneBeach.file.url} alt="logo"/>
                     <input type= "date" value= {date} onChange= {(e) => setDate(e.target.value)}></input>
-                    <input type="number" name="quantity" id="quantity" min="0" max="10" step="2" value= {quantity} onChange= {(e) => setQuantity(e.target.value)}></input>
+                    
                     
 
                     {oneBeach.equipmentAvailable.map(equipment => {
                         return (
-                            <div>
-                            <Equipment key ={equipment._id} beachEquipment= {equipment.sportEquipment} stock= {equipment.stock}/>
+                            <div key ={equipment._id}>
+                            <Equipment  beachEquipment= {equipment.sportEquipment} stock= {equipment.stock}/>
                             { localStorage.getItem("w2_token") ?
-                                <button type="button" class="btn btn-primary" onClick= {() => redirectToRent (equipment._id)} >Reservar</button>
+                                <button type="button" class="btn btn-primary" onClick= {() => redirectToRent (equipment.sportEquipment._id)} >Reservar</button>
                              :  <button type="button" class="btn btn-primary" onClick= {redirectToLogin}>Login</button>
                                  
                             }
+                            <input type="number" placeholder= "0" name="quantity" id="quantity" min="0" max="10" step="15" value= {quantity} onChange= {(e) => setQuantity(e.target.value)}></input>
                                 
                             </div>
                         ) 

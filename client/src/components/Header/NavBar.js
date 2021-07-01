@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from "react-router-dom";
+
 
 const NavBar = (props) => {
   
@@ -19,7 +19,8 @@ const NavBar = (props) => {
                   <a class="nav-link" href="/beaches">Playas</a>
                   <a class="nav-link" href="/sports">Material</a>
                   <a class="nav-link" href="/users/signup">Registrarse</a>
-                  <a class="nav-link" href="/users/login">Entrar</a>             
+                  <a class="nav-link" href="/users/login">Entrar</a>
+                  <a class="nav-link" href="/rent/myRent">Mis Reservas</a>              
                 </div>
               </div>
             </div>
