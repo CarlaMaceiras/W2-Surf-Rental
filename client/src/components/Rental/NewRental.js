@@ -82,7 +82,7 @@ const NewRental = () => {
             <div className="info_box">
                 <div className="subinfo_box">
                     
-                    <img src={rent.file.url} alt="logo"/>
+                    <img src={rent.file?.url} alt="logo"/>
                     
 
                     <div className="info_equipment">

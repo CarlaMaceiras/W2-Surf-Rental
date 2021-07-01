@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link} from 'react-router-dom';
 
 function Login(){
 
@@ -46,6 +46,11 @@ function Login(){
           </div>
           
           <button type="submit" class="btn btn-primary" onClick= {handleClick}>Log in</button>
+
+          <div>
+            <p>¿Aún no tienes cuenta?</p>
+            <Link  to={`/users/signup`}>Registrate</Link>
+          </div>
         </form>
   
         <div className="alert alert-success mt-2" style={{ display: successMessage ? 'block' : 'none' }} role="alert">

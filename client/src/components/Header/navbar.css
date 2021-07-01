@@ -1,0 +1,18 @@
+.navbar {
+    box-shadow: 0 2px 0px 0px  lightgrey inset;
+    background-color: grey;
+
+}
+
+.navbar-light .navbar-toggler {
+    border-color: transparent;
+    
+}
+
+.navbar-toggler:focus {
+    box-shadow: none;   
+}
+
+.menu_logo{
+    background-image: url("../Header/logo_sin_fondo.jpg");
+}
