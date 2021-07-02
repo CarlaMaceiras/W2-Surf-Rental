@@ -2,6 +2,7 @@ import React,{ useEffect, useState } from 'react';
 import { useParams, useHistory } from "react-router-dom";
 import axios from "axios";
 import Equipment from '../SportEquipment/Equipment'
+import { API_BASE_URL } from '../../constants/apiConstants';
 
 
 const Beach = () => {
@@ -14,7 +15,7 @@ const Beach = () => {
 
     useEffect(() => {
         const getBeach = async () => {
-            const response = await axios.get(`http://localhost:5000/beaches/find/${beachId}`)
+            const response = await axios.get(`${API_BASE_URL}/beaches/find/${beachId}`)
             setBeach(response.data.beach);
         };
         getBeach();

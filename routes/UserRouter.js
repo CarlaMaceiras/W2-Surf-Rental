@@ -235,6 +235,25 @@ UserRouter.post("/login", async (req, res, next) => {
 
 });
 
+//Info de un user login
+
+UserRouter.get('/login/oneUser', checkToken, async (req, res, next) => {
+    try {
+        const {id} = req.user;
+        let oneUser = await User.findById(id).populate("user", "name")
+
+        return res.json({
+            success: true,
+            oneUser
+        })
+    } catch (err) {
+        return next ({
+            status: 401,
+            message: err.message
+        });
+    }
+});
+
 //Modificar contraseña
 
 UserRouter.put("/changePassword", async (req, res, next) => {

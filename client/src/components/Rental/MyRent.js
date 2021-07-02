@@ -1,6 +1,7 @@
 import React,{ useEffect, useState } from 'react';
 import { useHistory } from "react-router-dom";
 import axios from "axios";
+import { API_BASE_URL } from '../../constants/apiConstants';
 
 const MyRent = () => {
     const [myRent, setRent] = useState([]);
@@ -11,7 +12,7 @@ const MyRent = () => {
         const getRent = async () => {
             try {
                 const token = localStorage.getItem("w2_token");
-                const response = await axios.get("http://localhost:5000/rent//myRental",
+                const response = await axios.get(`${API_BASE_URL}/rent//myRental`,
                 {
                     headers: {
                       "Authorization": token

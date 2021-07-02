@@ -13,6 +13,6 @@
     box-shadow: none;   
 }
 
-.menu_logo{
-    background-image: url("../Header/logo_sin_fondo.jpg");
+.header_logo{
+    width: 20px;
 }

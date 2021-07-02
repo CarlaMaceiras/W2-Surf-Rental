@@ -8,22 +8,44 @@ import {
   Route,
   Switch
 } from "react-router-dom";
-import CreateNewBeach from './components/Beach/CreateNewBeach';
 import NewRental from './components/Rental/NewRental';
 import Signup from './components/User/signup/Signup';
 import Login from './components/User/login/Login';
 import MyRent from './components/Rental/MyRent';
+import PrivateRoute from './utils/PrivateRoute';
+import axios from 'axios';
+import { API_BASE_URL } from './constants/apiConstants';
+import { useEffect, useState } from 'react';
 
 
+const App = () => {
 
-function App() {
+  const [user, setUser ] = useState();
+
+  const getUser = async () => {
+    const token = localStorage.getItem("w2_token")
+    const response = await axios(`${API_BASE_URL}/users/login/oneUser`, {
+      headers: {
+        "Authorization": token
+      }
+    })
+    setUser(response.data.oneUser)
+  }
+
+  useEffect(() => {
+    
+    if(localStorage.getItem("w2_token")){
+      getUser()
+    }
+
+  }, []);
   
   return (
   
     <Router>
       <div className="App">
 
-        <Navbar />
+        <Navbar user={user}/>
   
         <Switch>
 
@@ -36,7 +58,7 @@ function App() {
           </Route>
 
           <Route path="/users/login">
-            <Login />
+            <Login  getUser= {getUser}/>
           </Route>
 
           <Route path="/beaches" exact={true}>
@@ -46,22 +68,20 @@ function App() {
           <Route path="/beaches/:beachId">
             <Beach />
           </Route>
-          
-          <Route path="/beaches/newBeach">
-            <CreateNewBeach />
-          </Route>
 
           <Route path="/sports" exact={true}>
             <SportEquipment />
           </Route> 
 
-          <Route path="/rent/newRental/:beachId/:equipmentId/:date/:quantity">
+          <PrivateRoute path="/rent/newRental/:beachId/:equipmentId/:date/:quantity">
             <NewRental />
-          </Route>
+          </PrivateRoute>
 
           <Route path="/rent/myRent">
             <MyRent />
           </Route>
+
+          <Route path="*" component={() => "404 NOT FOUND"}></Route>
 
         </Switch>
        

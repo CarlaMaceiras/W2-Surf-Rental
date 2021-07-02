@@ -1,10 +1,12 @@
 import React from 'react';
 import "./navbar.css";
 import logo from "../Header/logo_sin_fondo.jpg"
+import { Link } from 'react-router-dom';
 
 
 
-const NavBar = (props) => {
+
+const NavBar = ({user}) => {
   
 
     return (
@@ -12,8 +14,10 @@ const NavBar = (props) => {
 
           <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <div className="container-fluid">
-              <div className="menu_logo"></div>
-            {/* <a href="" className="header_logo"><img src={logo} alt="logo"></img></a> */}
+              
+              <div className= "header_logo">
+                <a href="" className="logo"><img src={logo} alt="logo"></img></a>
+              </div>
               <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
               </button>
@@ -24,7 +28,8 @@ const NavBar = (props) => {
                   <a className="nav-link" href="/sports">Material</a>
                   <a className="nav-link" href="/users/signup">Registrarse</a>
                   <a className="nav-link" href="/users/login">Entrar</a>
-                  <a className="nav-link" href="/rent/myRent">Mis Reservas</a>              
+                  <a className="nav-link" href="/rent/myRent">Mis Reservas</a> 
+                  {user?.role === 1 ? <a className="nav-link" href="">Admin</a> : ""}             
                 </div>
               </div>
             </div>

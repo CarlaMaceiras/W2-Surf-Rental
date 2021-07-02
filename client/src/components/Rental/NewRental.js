@@ -1,6 +1,7 @@
 import React,{ useEffect, useState } from 'react';
 import { useParams, useHistory } from "react-router-dom";
 import axios from "axios";
+import { API_BASE_URL } from '../../constants/apiConstants';
 
 const NewRental = () => {
     const { beachId, equipmentId, date, quantity } = useParams();
@@ -15,7 +16,7 @@ const NewRental = () => {
         const getRent = async () => {
           try {
             const token = localStorage.getItem("w2_token");
-            const response = await axios.get(`http://localhost:5000/sports/oneEquipment/${equipmentId}`, {
+            const response = await axios.get(`${API_BASE_URL}/sports/oneEquipment/${equipmentId}`, {
               headers: {
                 "Authorization": token
               }

@@ -2,6 +2,7 @@ import React from "react";
 import { useEffect, useState } from 'react';
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { API_BASE_URL } from "../../constants/apiConstants";
 
 
 
@@ -11,7 +12,7 @@ const Beaches = () => {
 
     useEffect (() => {
         const getBeaches = async () => {
-        const response = await axios.get("http://localhost:5000/beaches")
+        const response = await axios.get(`${API_BASE_URL}/beaches`)
         
         console.log(response);
     

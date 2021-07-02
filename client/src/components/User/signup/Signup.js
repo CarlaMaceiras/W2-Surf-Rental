@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
+import { API_BASE_URL } from '../../../constants/apiConstants';
 
 
 function Signup(){
@@ -25,7 +26,7 @@ function Signup(){
         password
       };
       
-      const response = await axios.post("http://localhost:5000/users/signup", body);
+      const response = await axios.post(`${API_BASE_URL}/users/signup`, body);
       console.log(response);
       setSuccessMessage("Usuario creado correctamente");
       setTimeout(() => {
