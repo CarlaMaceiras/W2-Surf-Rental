@@ -1,6 +1,29 @@
 * {
-    font-family: "Rubik";
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 10;
     padding: 10;
+    
+}
+
+.separador {
+    
+    height: 70px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    background-image: url("./surfers22-863696_960_720.jpg");
+    background-repeat: no-repeat;
+    background-position-y: bottom;
+    background-size: cover;
+    filter: drop-shadow(30%);
+    padding: 15%;
+    
+
+}
+.separador p{
+    font-size: 30px;
+    color: whitesmoke;
+    font-style: italic;
     
 }

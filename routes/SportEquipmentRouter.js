@@ -152,10 +152,10 @@ SportEquipmentRouter.get("/oneEquipment/:id", async (req, res, next) => {
 
 //Eliminar un material
 
-SportEquipmentRouter.delete("/deleteEquipment/:id", async (req, res, next) => {
+SportEquipmentRouter.delete("/deleteEquipment", async (req, res, next) => {
     try {
 
-        const { id } = req.params
+        const { id } = req.body
         const sports = await SportEquipment.findById(id);
 
         const { public_id } = sports.file;

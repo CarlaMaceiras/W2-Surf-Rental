@@ -29,7 +29,7 @@ const NewRental = () => {
             console.error(err.response.data);
             if(err.response.status === 401){
               localStorage.removeItem("w2_token");
-              history.pushState("/users/login")
+              history.push("/users/login")
             }
           }
         

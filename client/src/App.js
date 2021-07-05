@@ -16,6 +16,8 @@ import PrivateRoute from './utils/PrivateRoute';
 import axios from 'axios';
 import { API_BASE_URL } from './constants/apiConstants';
 import { useEffect, useState } from 'react';
+import NewEquipment from './components/SportEquipment/NewEquipment';
+import Admin from './components/User/admin/Admin';
 
 
 const App = () => {
@@ -57,6 +59,10 @@ const App = () => {
             <Signup />
           </Route>
 
+          <PrivateRoute path="/admin">
+            <Admin />
+          </PrivateRoute>
+
           <Route path="/users/login">
             <Login  getUser= {getUser}/>
           </Route>
@@ -70,8 +76,12 @@ const App = () => {
           </Route>
 
           <Route path="/sports" exact={true}>
-            <SportEquipment />
+            <SportEquipment user={user}/>
           </Route> 
+
+          <PrivateRoute path="/sports/newEquipment">
+            <NewEquipment />
+          </PrivateRoute>
 
           <PrivateRoute path="/rent/newRental/:beachId/:equipmentId/:date/:quantity">
             <NewRental />

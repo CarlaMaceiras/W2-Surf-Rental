@@ -1,0 +1,34 @@
+.material{
+    display: flex;
+    flex-direction: row-reverse;
+    margin-top: 15px;
+    justify-content: space-between;
+}
+
+.info_material{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 35px 0 35px 0;
+
+}
+
+.material img{
+    width: 60%;
+    margin-right: 10px;
+}
+
+.material p{
+    font-size: 20px;
+    text-align: center;
+    margin: 15px 0 15px 0;
+
+}
+
+.btn-close{
+    color: white;
+    background-color: red;   
+}
+
+

@@ -1,0 +1,45 @@
+.map img{
+    width: 95%;
+    
+}
+
+.map{
+    display: flex;
+    justify-content: center;
+}
+
+.cabecera{
+    margin-top: 5%;
+    padding: 5%;
+    font-weight: bold;
+    font-size: 25px;
+    display: flex;
+    justify-content: center;
+    
+}
+
+.playas{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    padding: 3%;
+    
+}
+
+a{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    text-align: center;
+    font-size: 20px;
+
+}
+
+.btn-success{
+    background-color: #2e865d;
+    border-color: #2e865d;
+    margin-top: 2%;
+    box-shadow: inherit 2px black ;
+}
+

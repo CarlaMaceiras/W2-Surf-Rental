@@ -1,0 +1,58 @@
+.playa{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10%;
+    margin-bottom: 10%;  
+    font-weight: bold;
+    font-size: 25px;
+    justify-content: center;
+}
+
+.playa p{
+    text-align: center;
+}
+
+.date{
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 35px;
+    padding: 0 20% 0 20%;
+}
+
+.date input{
+    border: 2px solid black;
+    
+}
+
+.date label{
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.material_reserva{
+    display: flex;
+    flex-direction: column;
+    margin: 10% 0 10% 0;
+
+}
+
+.reserva{
+    display: flex;
+    justify-content: center;
+    margin: 5% 2% 5% 0;
+
+}
+
+.reserva .btn-primary{
+    background-color: #2e865d;
+    
+    
+}
+
+.line{
+    border: 1px solid grey;
+    width: 80%;
+    margin-left: 40px;
+}
+

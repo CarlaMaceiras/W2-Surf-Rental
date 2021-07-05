@@ -1,7 +1,13 @@
-.navbar {
+.header_navbar {
     box-shadow: 0 2px 0px 0px  lightgrey inset;
-    background-color: grey;
+    background-color: white;
+    display:flex;
+    flex-wrap: nowrap;
 
+}
+.container-fluid{
+    display: flex;
+    padding: 5%;
 }
 
 .navbar-light .navbar-toggler {
@@ -13,6 +19,20 @@
     box-shadow: none;   
 }
 
-.header_logo{
-    width: 20px;
+.header_logo {
+    display: flex;
+    align-items: center;
 }
+
+.header_logo p{
+    margin: 3px 0 0 10px;
+    color: dimgray;
+    font-style: italic;
+    font-weight: bold;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.header_logo img{
+    width: 60px;
+}
+

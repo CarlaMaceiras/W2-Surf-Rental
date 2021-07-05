@@ -4,6 +4,7 @@ import axios from "axios";
 import Equipment from "./Equipment";
 import { useHistory } from "react-router-dom";
 import { API_BASE_URL } from "../../constants/apiConstants";
+import "./sportEquipment.css";
 
 
 
@@ -40,15 +41,20 @@ const SportEquipment = ({user}) => {
 
 
     return (
-        <div className="App">
-    
-          {equipment.map(oneEquipment => {
-            return (
-            <Equipment key={oneEquipment._id} beachEquipment={oneEquipment} />
-            )
-          })}
+      <div className="all_equipment">
 
-        </div>
+        {equipment.map(oneEquipment => {
+          return (
+          <div className="linea">
+          <Equipment key={oneEquipment._id} beachEquipment={oneEquipment} user={user}/>
+          </div>
+          )
+        })}
+        
+        
+        
+
+      </div>
     )
 };
 
