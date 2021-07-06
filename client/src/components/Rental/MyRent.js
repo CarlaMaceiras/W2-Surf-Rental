@@ -67,8 +67,18 @@ const MyRent = () => {
     
           }, 1000);
           
-        }
-        
+        }  
+    }
+
+    const formatDate= (date)=>{
+
+        let newDate = new Date(date);
+
+        return(
+ 
+            `${newDate.getDate().toString().length === 1? "0" + newDate.getDate() : newDate.getDate()}-${newDate.getMonth().toString().length === 1? "0" + newDate.getMonth() : newDate.getMonth()}-${newDate.getFullYear()}`
+            
+        )
     }
 
     return (
@@ -102,7 +112,7 @@ const MyRent = () => {
 
                                 <div className="quantity_date_total">
                                     <p>{oneRent.quantity}</p>
-                                    {/* <p>{oneRent.date}</p> */}
+                                    <p>{formatDate(oneRent.date)}</p>
                                 </div>
                             </div>         
                         );

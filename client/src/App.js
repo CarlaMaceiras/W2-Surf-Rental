@@ -18,6 +18,7 @@ import { API_BASE_URL } from './constants/apiConstants';
 import { useEffect, useState } from 'react';
 import NewEquipment from './components/SportEquipment/NewEquipment';
 import Admin from './components/User/admin/Admin';
+import MyProfile from './components/User/MyProfile';
 
 
 const App = () => {
@@ -63,7 +64,7 @@ const App = () => {
             <Admin />
           </PrivateRoute>
 
-          <Route path="/users/login">
+          <Route path="/users/login" exact={true}>
             <Login  getUser= {getUser}/>
           </Route>
 
@@ -83,13 +84,17 @@ const App = () => {
             <NewEquipment />
           </PrivateRoute>
 
+          <PrivateRoute path="/users/login/oneUser">
+            <MyProfile user={user}/>
+          </PrivateRoute>
+
           <PrivateRoute path="/rent/newRental/:beachId/:equipmentId/:date/:quantity">
             <NewRental />
           </PrivateRoute>
 
-          <Route path="/rent/myRent">
+          <PrivateRoute path="/rent/myRent">
             <MyRent />
-          </Route>
+          </PrivateRoute>
 
           <Route path="*" component={() => "404 NOT FOUND"}></Route>
 

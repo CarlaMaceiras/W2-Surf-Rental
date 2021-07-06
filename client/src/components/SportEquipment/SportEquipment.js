@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect, useState } from 'react';
 import axios from "axios";
 import Equipment from "./Equipment";
-import { useHistory, useParams } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { API_BASE_URL } from "../../constants/apiConstants";
 import "./sportEquipment.css";
 
