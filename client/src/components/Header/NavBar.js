@@ -1,7 +1,7 @@
 import React from 'react';
 import "./navbar.css";
-import logo from "../Header/logo_simple.jpg"
 import { Link } from 'react-router-dom';
+import Logo from "../../images/logo2.png"
 
 
 
@@ -16,7 +16,7 @@ const NavBar = ({user}) => {
             <div className="container-fluid">
               
               <div className= "header_logo">
-                <a href="" className="logo"><img src={logo} alt="logo"></img></a>
+                <a href="" className="logo"><img src={Logo} alt="logo"></img></a>
                 <p>Surf Rental</p>
               </div>
               <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">

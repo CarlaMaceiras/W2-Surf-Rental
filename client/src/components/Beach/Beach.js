@@ -14,11 +14,12 @@ const Beach = () => {
 
     let history = useHistory();
 
-    useEffect(() => {
-        const getBeach = async () => {
-            const response = await axios.get(`${API_BASE_URL}/beaches/find/${beachId}`)
-            setBeach(response.data.beach);
-        };
+    const getBeach = async () => {
+        const response = await axios.get(`${API_BASE_URL}/beaches/find/${beachId}`)
+        setBeach(response.data.beach);
+    };
+
+    useEffect(() => {    
         getBeach();
     }, [beachId]);
 
@@ -34,6 +35,40 @@ const Beach = () => {
         // }
 
         history.push(`/rent/newRental/${beachId}/${equipmentId}/${date}/${quantity}`)
+    }
+
+    const deleteEquipment= async (equipmentId) => {
+
+        let opcion = window.confirm("¿Seguro que quieres eliminarlo?");
+
+        if(opcion == true ){
+          
+          try {
+            const token = localStorage.getItem("w2_token");
+            const response = await axios.delete(`${API_BASE_URL}/beaches/removeEquipment/${equipmentId}`, {
+            headers: {
+              "Authorization": token
+            }
+    
+            });
+    
+            console.log("Se ha eliminado correctamente")
+            getBeach()
+    
+          } catch (err) {
+            console.error(err.response.data);
+          }
+       
+        } else {
+          setTimeout(() => {
+    
+            console.log("Cancelando"); 
+            history.push("/beaches");
+    
+          }, 1000);
+          
+        }
+        
     }
 
     return (
@@ -58,7 +93,7 @@ const Beach = () => {
                         return (
                             <div className="material_reserva" key ={equipment._id}>
                                 
-                                <Equipment  beachEquipment= {equipment.sportEquipment} stock= {equipment.stock}/>
+                                <Equipment  beachEquipment= {equipment.sportEquipment} stock= {equipment.stock} deleteEquipment={deleteEquipment}/>
                                 <div className="reserva">
                                     { localStorage.getItem("w2_token") ?
                                         <button type="button" class="btn btn-primary" onClick= {() => redirectToRent (equipment.sportEquipment._id)} >Reservar</button>

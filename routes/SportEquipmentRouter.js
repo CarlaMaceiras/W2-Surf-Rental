@@ -84,7 +84,7 @@ SportEquipmentRouter.post("/", async (req, res, next) => {
         removeTmp(file.tempFilePath);
 
         const newEquipment = new SportEquipment({
-            model: model.toLowerCase(),
+            model,
             size,
             level,
             file: { public_id: newFile.public_id, url: newFile.secure_url }
@@ -152,10 +152,10 @@ SportEquipmentRouter.get("/oneEquipment/:id", async (req, res, next) => {
 
 //Eliminar un material
 
-SportEquipmentRouter.delete("/deleteEquipment", async (req, res, next) => {
+SportEquipmentRouter.delete("/deleteEquipment/:id", async (req, res, next) => {
     try {
 
-        const { id } = req.body
+        const { id } = req.params;
         const sports = await SportEquipment.findById(id);
 
         const { public_id } = sports.file;

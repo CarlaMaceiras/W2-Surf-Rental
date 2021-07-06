@@ -1,0 +1,44 @@
+
+.info_completa{
+    display: flex;
+    flex-direction: column;
+    
+
+    margin: 15px 0 15px 0;
+}
+
+.subinfo_completa{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+    
+}
+
+.one_info{
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+    box-shadow: 1px 1px 1px 1px grey;
+    
+}
+
+.one_info img{
+    width: 100px;
+}
+
+.info_total{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-right: 15px;
+    
+}
+
+.quantity_date_total{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-end;
+    padding-bottom: 13px;
+}

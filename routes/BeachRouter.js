@@ -302,7 +302,7 @@ BeachRouter.put("/removeEquipment/:id", checkToken, authAdmin, async (req, res, 
 
 
         const { id } = req.params;                                              //id de la playa
-        const { sportEquipment_id } = req.body;                                 //_id del objeto
+        // const { sportEquipment_id } = req.body;                                 //_id del objeto
 
         if (!sportEquipment_id) {
             return next({
@@ -315,7 +315,7 @@ BeachRouter.put("/removeEquipment/:id", checkToken, authAdmin, async (req, res, 
 
         const index = beach.equipmentAvailable.findIndex(equipment => {
 
-            if (equipment._id == sportEquipment_id) {
+            if (equipment._id == id) {
                 return true
             }
 

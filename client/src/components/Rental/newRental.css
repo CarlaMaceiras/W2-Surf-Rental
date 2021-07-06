@@ -1,0 +1,48 @@
+
+
+.info_box{
+    display: flex;
+    justify-content: center;
+
+    margin: 15px 0 15px 0;
+}
+
+.subinfo_box{
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 1px 1px 1px 1px grey;
+    padding: 10px 10px 10px 0;
+}
+
+.subinfo_box img{
+    width: 100px;
+}
+
+.info_equipment{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-right: 15px;
+    
+}
+
+.quantity_date{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-end;
+    padding-bottom: 13px;
+}
+.botonReserva{
+    display: flex;
+    justify-content: center;
+    
+}
+.btn-primary{
+    background-color: rgb(22, 156, 100);
+    border-color: rgb(22, 156, 100);
+}
+
+.btn-primary:hover{
+    background-color: rgb(56, 156, 115);
+}

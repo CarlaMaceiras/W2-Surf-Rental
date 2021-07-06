@@ -2,12 +2,12 @@ import React,{ useEffect, useState } from 'react';
 import { useParams, useHistory } from "react-router-dom";
 import axios from "axios";
 import { API_BASE_URL } from '../../constants/apiConstants';
+import "./newRental.css";
 
 const NewRental = () => {
     const { beachId, equipmentId, date, quantity } = useParams();
     
     const [cantidad, setCantidad] = useState(`${quantity}`);
-    
     
     const [rent, setRent] = useState([]);
 
@@ -34,7 +34,8 @@ const NewRental = () => {
           }
         
         };
-        getRent()
+        getRent();
+       
       
       }, []);
 
@@ -80,6 +81,10 @@ const NewRental = () => {
 
     return (
         <div>
+            <div className="separador"> 
+            <p>Reserva</p>
+          </div>
+
             <div className="info_box">
                 <div className="subinfo_box">
                     
@@ -90,9 +95,7 @@ const NewRental = () => {
                         <div>
                             <p>{rent.model}</p>
                         </div>
-                        <div>
-                            <p>{rent.size}</p>
-                        </div>
+                        
                         <div>
                             <p>{rent.level}</p>
                         </div>
@@ -100,14 +103,19 @@ const NewRental = () => {
                     </div>
 
                     <div className="quantity_date">
-                        <input type="number" placeholder= "0" name="quantity" id="quantity" min="0" max="10" step="15" value= {cantidad} onChange= {(e) => setCantidad(e.target.value)}></input>
-                        <p>{date}</p>
+                        <div>
+                            <input type="number" placeholder= "0" name="quantity" id="quantity" min="0" max="10" step="15" value= {cantidad} onChange= {(e) => setCantidad(e.target.value)}></input>
+                        </div>
+                        <div>
+                            {date}
+                        </div>
                     </div>
                 </div> 
             </div>
 
-            <button type="button" className="btn btn-primary"  onClick= {confirmationRent}>Reservar</button>
-
+            <div className="botonReserva">
+                <button type="button" className="btn btn-primary"  onClick= {confirmationRent}>Reservar</button>
+            </div>
         </div>
     )
 }
