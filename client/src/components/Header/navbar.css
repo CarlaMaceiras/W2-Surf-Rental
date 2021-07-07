@@ -1,23 +1,33 @@
 .header_navbar {
     box-shadow:  0 3px  3px 0  rgb(41, 41, 41); 
     background-color: white;
-    display:flex;
-    flex-wrap: nowrap;
+    
 
 }
-.container-fluid{
-    display: flex;
-    padding: 5%;
+
+.navbar-light .navbar-nav .nav-link {
+    color:rgb(66, 66, 66);
+    font-size: 20px;
+    border-bottom: 1px solid grey;
 }
+
+.navbar-light .navbar-nav {
+    box-shadow: 1px 0 1px 0 grey;
+}
+
 
 .navbar-light .navbar-toggler {
     border-color: transparent;
     
 }
 
+
+
 .navbar-toggler:focus {
     box-shadow: none;   
 }
+
+
 
 .header_logo {
     display: flex;
