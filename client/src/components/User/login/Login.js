@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useHistory, Link} from 'react-router-dom';
 import { API_BASE_URL } from '../../../constants/apiConstants';
+import "./login.css"
 
 function Login({getUser}){
 
@@ -37,28 +38,40 @@ function Login({getUser}){
     };
   
     return (
-      <div className= "card col-12 col-lg-4 login-card mt-2 hv-center">
-        <form>
-          <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Email</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value= {email} onChange= {(e) => setEmail(e.target.value)}/> 
-            
-          </div>
-          <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Contraseña</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" value= {password} onChange= {(e) => setPassword(e.target.value)}/>
-          </div>
-          
-          <button type="submit" class="btn btn-primary" onClick= {handleClick}>Log in</button>
 
-          <div>
-            <p>¿Aún no tienes cuenta?</p>
-            <Link  to={`/users/signup`}>Registrate</Link>
+      <div>
+        <div className="separador"> 
+          <p>Login</p>
+        </div>
+        <div className= "card col-12 col-lg-4 login-card mt-2 hv-center">
+          <form>
+            <div className="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Email</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value= {email} onChange= {(e) => setEmail(e.target.value)}/> 
+              
+            </div>
+            <div className="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+              <input type="password" class="form-control" id="exampleInputPassword1" value= {password} onChange= {(e) => setPassword(e.target.value)}/>
+            </div>
+
+            <div className="boton-login"> 
+              <button type="submit" class="btn btn-primary" onClick= {handleClick}>Log in</button>
+            </div>
+
+            <div className="registro">
+              <div>
+                <p>¿Aún no tienes cuenta?</p>
+              </div>
+              <div className="link">
+                <Link  to={`/users/signup`}>Registrate</Link>
+              </div>
+            </div>
+          </form>
+    
+          <div className="alert alert-success mt-2" style={{ display: successMessage ? 'block' : 'none' }} role="alert">
+            {successMessage}
           </div>
-        </form>
-  
-        <div className="alert alert-success mt-2" style={{ display: successMessage ? 'block' : 'none' }} role="alert">
-          {successMessage}
         </div>
       </div>
     );

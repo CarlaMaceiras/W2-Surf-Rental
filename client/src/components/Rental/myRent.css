@@ -33,12 +33,14 @@
     justify-content: space-around;
     margin-right: 15px;
     
+    
 }
 
 .quantity_date_total{
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    align-items: flex-end;
+    align-items: center;
     padding-bottom: 13px;
+    padding: 5px;
 }

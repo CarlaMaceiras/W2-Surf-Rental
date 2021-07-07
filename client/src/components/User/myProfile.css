@@ -1,0 +1,40 @@
+
+.perfil{
+    width: 98%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.perfil img{
+    width: 200px;
+    height: 200px;
+    border-radius: 100px;
+    margin-right: 40px;
+}
+
+
+
+.perfil_link a{
+    font-size: 18px;
+    color: #2b5a47;
+}
+
+.mi_perfil label{
+    font-weight: bold;
+}
+
+.boton_logout{
+    width: 95%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.boton_logout .btn{
+    background-color: #4ba07e;
+    border-color: #4ba07e;
+    width: 100%;
+}

@@ -1,5 +1,5 @@
 * {
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     margin: 10;
     padding: 10;
     
@@ -18,12 +18,13 @@
     background-size: cover;
     filter: drop-shadow(30%);
     padding: 15%;
+    margin-bottom: 20px;
     
 
 }
 .separador p{
-    font-size: 30px;
-    color: whitesmoke;
+    font-size: 35px;
+    color: rgb(59, 59, 59);
     font-style: italic;
     
 }

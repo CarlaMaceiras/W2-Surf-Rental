@@ -76,16 +76,19 @@ const Beach = () => {
             {oneBeach? 
                 <div>
                     <div className="separador"> 
-                        <p>Material</p>
+                        <p>Playa y Material</p>
                     </div>
                     <div className="playa">
                         <p >{oneBeach.name}</p>
                         {/* <p >{oneBeach.location}</p> */}
                         <img src= {oneBeach.file.url} alt="logo"/>
                     </div>
+                    <div className="playa_info">
+                        <p>Primero selecciona la fecha del alquiler para saber qué material está disponible</p>
+                    </div>
                     
                     <div className="date">
-                        <label>Selecciona la fecha</label>
+                        <label>Fecha alquiler</label>
                         <input  type= "date" value= {date} onChange= {(e) => setDate(e.target.value)}></input>
                     </div>
 

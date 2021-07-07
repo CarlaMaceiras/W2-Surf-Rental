@@ -1,6 +1,18 @@
 
 .linea{
-    border-bottom: 1px dotted grey;
-    width: 80%;
-    margin-left: 35px;
+    box-shadow: 2px 2px 2px 2px rgb(41, 41, 41);
+    width: 90%;
+    margin: auto;
+    text-align: center;
+}
+
+.fotoTabla{
+    margin: 20px;
+    width: 90%
+
+}
+
+.fotoTabla img{
+    width: 100%;
+    
 }

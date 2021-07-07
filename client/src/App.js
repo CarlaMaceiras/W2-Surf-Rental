@@ -19,6 +19,8 @@ import { useEffect, useState } from 'react';
 import NewEquipment from './components/SportEquipment/NewEquipment';
 import Admin from './components/User/admin/Admin';
 import MyProfile from './components/User/MyProfile';
+import Footer from './components/Footer/Footer';
+import Home from './components/Home/Home';
 
 
 const App = () => {
@@ -53,7 +55,7 @@ const App = () => {
         <Switch>
 
           <Route path="/" exact={true}>   {/*Si no se pone exact, no entra en las rutas que tengas algo después de "/"*/}
-            <h2>Inicio</h2>
+            <Home />
           </Route>
 
           <Route path="/users/signup">
@@ -99,6 +101,8 @@ const App = () => {
           <Route path="*" component={() => "404 NOT FOUND"}></Route>
 
         </Switch>
+
+        {/* <Footer /> */}
        
       </div>
     </Router>

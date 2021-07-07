@@ -6,9 +6,19 @@
     font-weight: bold;
     font-size: 25px;
     justify-content: center;
+    padding: 3%;
+    box-shadow: 2px 2px 2px 2px rgb(41, 41, 41);
 }
 
 .playa p{
+    text-align: center;
+}
+
+.playa_info{
+    padding: 9%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
 }
 
@@ -33,7 +43,11 @@
 .material_reserva{
     display: flex;
     flex-direction: column;
-    margin: 10% 0 10% 0;
+    box-shadow: 2px 2px 2px 2px rgb(41, 41, 41);
+    width: 90%;
+    margin: auto;
+    text-align: center;
+    margin-bottom: 20px;
 
 }
 
@@ -41,11 +55,15 @@
     display: flex;
     justify-content: center;
     margin: 5% 2% 5% 0;
+    padding: 3%;
 
 }
 
 .reserva .btn-primary{
-    background-color: #2e865d;
+    background-color: #2b5a47;
+    width: 75%;
+    margin-right: 10px;
+
     
     
 }

@@ -5,6 +5,7 @@ import Equipment from "./Equipment";
 import { useHistory } from "react-router-dom";
 import { API_BASE_URL } from "../../constants/apiConstants";
 import "./sportEquipment.css";
+import fotoTabla from "../../images/material.jpg"
 
 
 
@@ -81,6 +82,20 @@ const SportEquipment = ({user}) => {
 
   return (
     <div className="all_equipment">
+
+      <div className="separador"> 
+        <p>Material</p>
+      </div>
+
+      <div className="cabecera"> 
+        <p>¿Qué puedes alquilar?</p>
+        <p className="info">Simplemente, el mejor material al mejor precio. Tanto si eres principiante como surfista avanzado o si prefieres 
+          practicar otros deportes como Kite surf, SUP o Kayak </p>
+      </div>
+
+      <div className="fotoTabla">
+        <img src={fotoTabla} alt="image"/>
+      </div>
 
       {equipment.map(oneEquipment => {
         return (
