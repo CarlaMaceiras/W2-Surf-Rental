@@ -40,11 +40,14 @@
     
 }
 .botonReserva .btn-primary{
-    background-color: #2b5a47;
-    border-color: #2b5a47;
+    background-color: rgb(59, 59, 59);
+    border-color: rgb(59, 59, 59);
+    color: white;
     width: 72%;
 }
 
 .btn-primary:hover{
-    background-color: #2b5a47;
+    background-color: rgb(199, 174, 91);
+    border-color: rgb(199, 174, 91);;
+    color: rgb(59, 59, 59);
 }

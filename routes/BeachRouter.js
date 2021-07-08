@@ -5,6 +5,7 @@ const SportEquipment = require("../models/SportEquipment");
 const BeachRouter = express.Router();
 const cloudinary = require("cloudinary");
 const fs = require("fs-extra");
+const Rental = require("../models/Rental");
 
 //CLOUDINARY
 cloudinary.config({
@@ -124,20 +125,36 @@ BeachRouter.get("/", async (req, res, next) => {
 BeachRouter.get("/find/:id", async (req, res, next) => {
     try {
 
-
-        const { id } = req.params
+        const { date } = req.query; 
+        console.log(date);                          
+        const { id } = req.params;
 
         //const id = req.params.id 
 
+        let fecha
+
+        if(date){
+            fecha= new Date(date)
+        } else {
+            fecha= new Date()
+            fecha.setHours(0,0,0,0)
+        }
+
         let beach = await Beach.findById(id).populate("equipmentAvailable.sportEquipment");
 
+        let todayRent= await Rental.find({beach: id, date: fecha, status: "reservado"});
+
+        todayRent.forEach(rent => {
+            let equipment = beach.equipmentAvailable.find(eq => eq.sportEquipment._id.equals(rent.sportEquipment))
+            equipment.stock -= rent.quantity
+        })
 
         return res.json({
             success: true,
             beach
         });
 
-    } catch (error) {
+    } catch (err) {
         return next({
             status: 403,
             message: err.message

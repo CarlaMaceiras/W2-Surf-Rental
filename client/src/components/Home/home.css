@@ -1,7 +1,9 @@
-.carousel-item img{
-    height: 600px;
-    width: auto;
+.carousel-inner{
+   
+    width: 220%;
 }
+
+
 
 .separacion{
     border: 3px solid grey;

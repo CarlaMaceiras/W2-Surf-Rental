@@ -60,12 +60,18 @@
 }
 
 .reserva .btn-primary{
-    background-color: #2b5a47;
     width: 75%;
     margin-right: 10px;
+    background-color: rgb(59, 59, 59);
+    border-color: rgb(59, 59, 59);
+    color: white;
+    
+    
+}
 
-    
-    
+.reserva .btn-primary:hover {
+    transform: scale(1.2);
+    background-color: rgb(92, 91, 91);
 }
 
 .line{

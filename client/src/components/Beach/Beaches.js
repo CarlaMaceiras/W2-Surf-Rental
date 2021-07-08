@@ -50,7 +50,7 @@ const Beaches = () => {
           {beaches.map(beach => {
             return (
               
-              <Link  key={beach._id} to={`/api/beaches/${beach._id}`}> 
+              <Link  key={beach._id} to={`/beaches/${beach._id}`}> 
                 <div className="playas">
                   <p>{beach.name}</p>
                   <img src= {beach.file.url} alt="logo"/> 

@@ -26,7 +26,7 @@ function Login({getUser}){
         
         setTimeout(() => {
   
-          history.push("/api/beaches");
+          history.push("/beaches");
      
         }, 2000);
         

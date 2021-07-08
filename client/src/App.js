@@ -29,7 +29,7 @@ const App = () => {
 
   const getUser = async () => {
     const token = localStorage.getItem("w2_token")
-    const response = await axios("/users/login/oneUser", {
+    const response = await axios("/api/users/login/oneUser", {
       headers: {
         "Authorization": token
       }

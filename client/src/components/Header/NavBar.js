@@ -1,7 +1,7 @@
 import React from 'react';
 import "./navbar.css";
 import { Link } from 'react-router-dom';
-import Logo from "../../images/logo5.png"
+import Logo from "../../images/logoTransparente.png"
 
 
 
@@ -12,14 +12,14 @@ const NavBar = ({user}) => {
   return (
     <div>
       
-        <nav className="header_navbar navbar navbar-expand-lg navbar-light ">
+        <nav className="header_navbar navbar navbar-expand-lg navbar-dark ">
           <div className="container-fluid">
             
             <div className= "header_logo">
               <a href="" className="logo"><img src={Logo} alt="logo"></img></a>
-              <p>Surf Rental</p>
+              <p></p>
             </div>
-            <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <button className="navbar-toggler" type="checkbox" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
               <span className="navbar-toggler-icon"></span>
             </button>
             <div className="collapse navbar-collapse" id="navbarNavAltMarkup">

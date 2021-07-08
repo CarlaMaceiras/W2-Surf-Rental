@@ -14,7 +14,7 @@ const Admin = () => {
         try {
             setTimeout(() => {
   
-                history.push("/api/sports/newEquipment");
+                history.push("/sports/newEquipment");
            
               }, 2000);
         } catch (err) {

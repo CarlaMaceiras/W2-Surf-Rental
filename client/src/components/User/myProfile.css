@@ -19,7 +19,7 @@
 
 .perfil_link a{
     font-size: 18px;
-    color: #2b5a47;
+    color: rgb(59, 59, 59);
 }
 
 .mi_perfil label{
@@ -34,7 +34,8 @@
 }
 
 .boton_logout .btn{
-    background-color: #4ba07e;
-    border-color: #4ba07e;
+    background-color: rgb(59, 59, 59);
+    border-color: rgb(59, 59, 59);
+    color: white;
     width: 100%;
 }

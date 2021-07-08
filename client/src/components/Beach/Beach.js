@@ -7,21 +7,25 @@ import "../Beach/beach.css";
 
 
 const Beach = () => {
+    
+    let today = new Date();
+    console.log(today.toISOString().substr(0,10))
+
     const {beachId} = useParams();
     const [oneBeach, setBeach] = useState();
-    const [date, setDate ] = useState();
+    const [date, setDate ] = useState(today.toISOString().substr(0,10));
     const [quantity, setQuantity] = useState();
 
     let history = useHistory();
 
     const getBeach = async () => {
-        const response = await axios.get(`/api/beaches/find/${beachId}`)
+        const response = await axios.get(`/api/beaches/find/${beachId}?date=${date}`)
         setBeach(response.data.beach);
     };
 
     useEffect(() => {    
         getBeach();
-    }, [beachId]);
+    }, [beachId, date]);
 
     const redirectToLogin = () => {
         history.push("/users/login")
@@ -34,7 +38,7 @@ const Beach = () => {
         //    return console.error(err.response.data)
         // }
 
-        history.push(`/api/rent/newRental/${beachId}/${equipmentId}/${date}/${quantity}`)
+        history.push(`/rent/newRental/${beachId}/${equipmentId}/${date}/${quantity}`)
     }
 
     const deleteEquipment= async (equipmentId) => {
@@ -95,7 +99,7 @@ const Beach = () => {
                     {oneBeach.equipmentAvailable.map(equipment => {
                         return (
                             <div className="material_reserva" key ={equipment._id}>
-                                
+                                                                                                
                                 <Equipment  beachEquipment= {equipment.sportEquipment} stock= {equipment.stock} deleteEquipment={deleteEquipment}/>
                                 <div className="reserva">
                                     { localStorage.getItem("w2_token") ?

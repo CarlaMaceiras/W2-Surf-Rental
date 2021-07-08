@@ -12,19 +12,23 @@
     text-align: center;
     align-items: center;
     justify-content: center;
-    background-image: url("./surfers22-863696_960_720.jpg");
+    background-image: url("../src/images/surfers-863696_960_720.jpg");
     background-repeat: no-repeat;
     background-position-y: bottom;
     background-size: cover;
     filter: drop-shadow(30%);
     padding: 15%;
     margin-bottom: 20px;
+    box-shadow: 2px 2px black;
     
 
 }
 .separador p{
     font-size: 35px;
-    color: rgb(59, 59, 59);
-    font-style: italic;
-    
+    color: rgb(59, 59, 59);  
+}
+
+button{
+    background-color: rgb(59, 59, 59);
+    color: white;
 }

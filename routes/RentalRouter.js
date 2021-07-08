@@ -25,9 +25,9 @@ RentalRouter.post("/newRental/:beachId", async (req, res, next) => {
             })
         }
 
+        let fecha = new Date(date);
         let playa = await Beach.findById(beachId);
-
-
+        
         if (!playa) {
             return next({
                 status: 403,
@@ -46,28 +46,22 @@ RentalRouter.post("/newRental/:beachId", async (req, res, next) => {
             })
         };
 
-        let stockInicial = material.stock;
+        let todayRent= await Rental.find({beach: beachId, date: fecha, status: "reservado"});
+
+        todayRent.forEach(rent =>{
+            let equipment= rent.sportEquipment._id.equals(equipmentId)
+            if(quantity > equipment.stock){
+                return next({
+                    status: 403,
+                    message: "No hay suficiente material. Por favor escoge otro"
+                })
+            } else {
+                equipment.stock -= quantity
+            }
+            
+        })
 
 
-        if (stockInicial < 1) {
-            return next({
-                status: 403,
-                message: "Este material se ha agotado. Por favor, escoge otro"
-            })
-        };
-
-
-        if (quantity > stockInicial) {
-            return next({
-                status: 403,
-                message: "No hay suficiente material. Por favor escoge otro"
-            })
-        };
-
-        // material.stock -= quantity;
-
-        let fecha = new Date(date);
-        // fecha.setHours(fecha.getHours() + 2);
 
         const crearReserva = new Rental({
             user,
