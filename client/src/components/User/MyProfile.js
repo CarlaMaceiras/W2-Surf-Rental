@@ -1,13 +1,15 @@
 import "./myProfile.css";
-import { Link } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import fotoPerfil from "../../images/foto_perfil2.jpg";
 
 
 const MyProfile= ({user}) => {
+    let history = useHistory();
 
     const logout = () => {
         localStorage.clear();
         window.location.href = '/';
+        history.push("/")
     }
    
 
