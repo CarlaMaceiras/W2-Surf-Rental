@@ -69,7 +69,7 @@ const SportEquipment = ({user}) => {
       setTimeout(() => {
 
         console.log("Cancelando"); 
-        history.push("/sports");
+        history.push("/api/sports");
 
       }, 1000);
       
