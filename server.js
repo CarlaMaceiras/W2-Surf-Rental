@@ -34,10 +34,10 @@ app.use(express.urlencoded({extended: true}));
 app.use(fileUpload({useTempFiles:true}));
 
 
-app.use("/users", UserRouter);
-app.use("/sports", checkToken, SportEquipmentRouter);       //Esto es un middleware
-app.use("/beaches", BeachRouter);
-app.use("/rent",  checkToken, RentalRouter);
+app.use("/api/users", UserRouter);
+app.use("/api/sports", checkToken, SportEquipmentRouter);       //Esto es un middleware
+app.use("/api/beaches", BeachRouter);
+app.use("/api/rent",  checkToken, RentalRouter);
 
 //app.use("/sports",checkToken, authAdmin, SportEquipmentRouter);
 

@@ -26,7 +26,7 @@ function Signup(){
         password
       };
       
-      const response = await axios.post("/users/signup", body);
+      const response = await axios.post("/api/users/signup", body);
       console.log(response);
       setSuccessMessage("Usuario creado correctamente");
       setTimeout(() => {

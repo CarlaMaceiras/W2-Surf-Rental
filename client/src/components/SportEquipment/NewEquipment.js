@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useHistory, Link} from 'react-router-dom';
 import { API_BASE_URL} from '../../constants/apiConstants'
 
 
@@ -23,7 +22,7 @@ const NewEquipment= () => {
 
         try {
             const token = localStorage.getItem("w2_token");
-            const response = await axios.post("/sports", bodyFormData, {
+            const response = await axios.post("/api/sports", bodyFormData, {
             
         
                 headers: {

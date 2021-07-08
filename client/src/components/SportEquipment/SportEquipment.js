@@ -17,7 +17,7 @@ const SportEquipment = ({user}) => {
   const getSportEquipment = async () => {
     try {
       const token = localStorage.getItem("w2_token");
-      const response = await axios.get(`${API_BASE_URL}/sports`, {
+      const response = await axios.get(`/api/sports`, {
         headers: {
           "Authorization": token
         }
@@ -51,7 +51,7 @@ const SportEquipment = ({user}) => {
       
       try {
         const token = localStorage.getItem("w2_token");
-        const response = await axios.delete(`/sports/deleteEquipment/${equipmentId}`, {
+        const response = await axios.delete(`/api/sports/deleteEquipment/${equipmentId}`, {
         headers: {
           "Authorization": token
         }

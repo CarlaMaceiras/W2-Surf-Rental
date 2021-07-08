@@ -15,7 +15,7 @@ const Beach = () => {
     let history = useHistory();
 
     const getBeach = async () => {
-        const response = await axios.get(`${API_BASE_URL}/beaches/find/${beachId}`)
+        const response = await axios.get(`/api/beaches/find/${beachId}`)
         setBeach(response.data.beach);
     };
 
@@ -34,7 +34,7 @@ const Beach = () => {
         //    return console.error(err.response.data)
         // }
 
-        history.push(`/rent/newRental/${beachId}/${equipmentId}/${date}/${quantity}`)
+        history.push(`/api/rent/newRental/${beachId}/${equipmentId}/${date}/${quantity}`)
     }
 
     const deleteEquipment= async (equipmentId) => {
@@ -45,7 +45,7 @@ const Beach = () => {
           
           try {
             const token = localStorage.getItem("w2_token");
-            const response = await axios.delete(`/beaches/removeEquipment/${equipmentId}`, {
+            const response = await axios.delete(`/api/beaches/removeEquipment/${equipmentId}`, {
             headers: {
               "Authorization": token
             }

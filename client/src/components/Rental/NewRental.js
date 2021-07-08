@@ -16,7 +16,7 @@ const NewRental = () => {
         const getRent = async () => {
           try {
             const token = localStorage.getItem("w2_token");
-            const response = await axios.get(`${API_BASE_URL}/sports/oneEquipment/${equipmentId}`, {
+            const response = await axios.get(`/api/sports/oneEquipment/${equipmentId}`, {
               headers: {
                 "Authorization": token
               }
@@ -55,7 +55,7 @@ const NewRental = () => {
       
         try {
             const token = localStorage.getItem("w2_token");
-            const response = await axios.post(`/rent/newRental/${beachId}`, body, 
+            const response = await axios.post(`/api/rent/newRental/${beachId}`, body, 
             
             {
                 headers: {
