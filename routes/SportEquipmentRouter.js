@@ -23,7 +23,7 @@ const removeTmp = (path) => {
 
 
 //Crear nuevo material
-SportEquipmentRouter.post("/", checkToken, authAdmin, async (req, res, next) => {
+SportEquipmentRouter.post("/createEquipment", checkToken, authAdmin, async (req, res, next) => {
 
 
     try {
@@ -110,7 +110,7 @@ SportEquipmentRouter.post("/", checkToken, authAdmin, async (req, res, next) => 
 
 
 //coger, ver, todo el material (sin estar asociado a una playa)
-SportEquipmentRouter.get("/", async (req, res, next) => {
+SportEquipmentRouter.get("/allEquipment", async (req, res, next) => {
     try {
 
         let sports = await SportEquipment.find({})

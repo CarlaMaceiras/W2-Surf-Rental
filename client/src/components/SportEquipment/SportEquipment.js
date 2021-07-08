@@ -17,7 +17,7 @@ const SportEquipment = ({user}) => {
   const getSportEquipment = async () => {
     try {
       const token = localStorage.getItem("w2_token");
-      const response = await axios.get(`/api/sports`, {
+      const response = await axios.get("/api/sports/allEquipment", {
         headers: {
           "Authorization": token
         }

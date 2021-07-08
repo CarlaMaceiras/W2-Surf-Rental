@@ -22,7 +22,7 @@ const NewEquipment= () => {
 
         try {
             const token = localStorage.getItem("w2_token");
-            const response = await axios.post("/api/sports", bodyFormData, {
+            const response = await axios.post("/api/sports/createEquipment", bodyFormData, {
             
         
                 headers: {
