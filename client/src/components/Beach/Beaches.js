@@ -14,7 +14,7 @@ const Beaches = () => {
 
     useEffect (() => {
         const getBeaches = async () => {
-        const response = await axios.get(`${API_BASE_URL}/beaches`)
+        const response = await axios.get("/beaches")
         
         console.log(response);
     

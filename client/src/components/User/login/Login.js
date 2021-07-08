@@ -17,7 +17,7 @@ function Login({getUser}){
       e.preventDefault();                                                            //Así no hace refresh la página
   
       try{
-        const response = await axios.post(`${API_BASE_URL}/users/login`, { email, password });
+        const response = await axios.post("/users/login", { email, password });
         console.log(response.data);
         setSuccessMessage("Login correcto");
         localStorage.setItem("w2_token", response.data.token)

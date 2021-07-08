@@ -45,7 +45,7 @@ const Beach = () => {
           
           try {
             const token = localStorage.getItem("w2_token");
-            const response = await axios.delete(`${API_BASE_URL}/beaches/removeEquipment/${equipmentId}`, {
+            const response = await axios.delete(`/beaches/removeEquipment/${equipmentId}`, {
             headers: {
               "Authorization": token
             }

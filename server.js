@@ -6,6 +6,7 @@ require("dotenv").config();
 const { errorHandler, checkToken, authAdmin } = require("./middleware"); 
 const app= express();
 const {DB_URI, PORT} = process.env          //Es lo mismo que poner: const DB_URI= process.env.DB_URI;
+const path = require("path");
 
 
 //Importar router
@@ -43,6 +44,13 @@ app.use("/rent",  checkToken, RentalRouter);
 
 app.use(errorHandler);  //se pone aquí abajo porque los middelwares "expess.json y express.urlencoded" suceden antes de llegar a la ruta. Después entra en los get, put, ets y los error van después, suceden después
 
+
+if(process.env.NODE_ENV === 'production'){
+    app.use(express.static('client/build'))
+    app.get('*', (req, res) => {
+        res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'))
+    })
+}
 
 app.listen(PORT || 5000, () => console.log(`now listening for requests on port ${PORT}`));
 

@@ -51,7 +51,7 @@ const SportEquipment = ({user}) => {
       
       try {
         const token = localStorage.getItem("w2_token");
-        const response = await axios.delete(`${API_BASE_URL}/sports/deleteEquipment/${equipmentId}`, {
+        const response = await axios.delete(`/sports/deleteEquipment/${equipmentId}`, {
         headers: {
           "Authorization": token
         }

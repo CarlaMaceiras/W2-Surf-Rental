@@ -55,7 +55,7 @@ const NewRental = () => {
       
         try {
             const token = localStorage.getItem("w2_token");
-            const response = await axios.post(`http://localhost:5000/rent/newRental/${beachId}`, body, 
+            const response = await axios.post(`/rent/newRental/${beachId}`, body, 
             
             {
                 headers: {

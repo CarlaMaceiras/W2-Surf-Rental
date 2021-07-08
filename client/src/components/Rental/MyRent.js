@@ -45,7 +45,7 @@ const MyRent = () => {
           
           try {
             const token = localStorage.getItem("w2_token");
-            const response = await axios.delete(`${API_BASE_URL}/rent/deleteMyRental/${reserveId}`, {
+            const response = await axios.delete(`/rent/deleteMyRental/${reserveId}`, {
             headers: {
               "Authorization": token
             }
