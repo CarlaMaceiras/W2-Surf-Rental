@@ -7,7 +7,7 @@ const MyProfile= ({user}) => {
 
     const logout = () => {
         localStorage.clear();
-        window.location.href = '/api';
+        window.location.href = '/';
     }
    
 
