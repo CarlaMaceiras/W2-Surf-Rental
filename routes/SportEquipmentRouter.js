@@ -3,6 +3,7 @@ const SportEquipment = require("../models/SportEquipment");
 const SportEquipmentRouter = express.Router();
 const cloudinary = require("cloudinary");
 const fs = require("fs-extra");
+const { authAdmin, checkToken } = require("../middleware");
 
 
 
@@ -22,7 +23,7 @@ const removeTmp = (path) => {
 
 
 //Crear nuevo material
-SportEquipmentRouter.post("/", async (req, res, next) => {
+SportEquipmentRouter.post("/", checkToken, authAdmin, async (req, res, next) => {
 
 
     try {
@@ -152,7 +153,7 @@ SportEquipmentRouter.get("/oneEquipment/:id", async (req, res, next) => {
 
 //Eliminar un material
 
-SportEquipmentRouter.delete("/deleteEquipment/:id", async (req, res, next) => {
+SportEquipmentRouter.delete("/deleteEquipment/:id", checkToken, authAdmin, async (req, res, next) => {
     try {
 
         const { id } = req.params;
