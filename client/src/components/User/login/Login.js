@@ -28,7 +28,7 @@ function Login({getUser}){
   
           history.push("/beaches");
      
-        }, 2000);
+        }, 500);
         
       }
       catch (err) {
