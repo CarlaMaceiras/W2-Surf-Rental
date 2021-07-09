@@ -16,7 +16,7 @@ const NavBar = ({user}) => {
   return (
     <div>
 
-      <div className="ordenador"> </div>
+      {/* <div className="ordenador"> </div> */}
 
       <nav className="navbar navbar-expand-dark navbar-dark bg-dark">
         <div className="container-fluid">
