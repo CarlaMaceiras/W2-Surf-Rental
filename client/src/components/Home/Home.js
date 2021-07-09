@@ -5,7 +5,8 @@ import kite from "../../images/Kitesurf.jpg"
 import video from "../../images/Surfing.mp4"
 
 
-const Home = () => {
+const Home = (props) => {
+    
 
     return (
         
@@ -79,6 +80,8 @@ const Home = () => {
 
                 </div> */}
             {/* </div> */}
+
+           
         </div>
 
     )

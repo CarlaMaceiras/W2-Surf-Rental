@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { API_BASE_URL } from '../../../constants/apiConstants';
 
 
-function Signup(){
+function Signup(props){
 
   let history = useHistory();
 
@@ -14,9 +14,13 @@ function Signup(){
   const [password, setPassword ] = useState("");
 
   const [successMessage, setSuccessMessage] = useState(null);
+  
+  
 
   const handleClick = async (e) => {
-    e.preventDefault();                                                            //Así no hace refresh la página
+    e.preventDefault();                                   //Así no hace refresh la página
+    props.showError(null) 
+                                                              
 
     try{
       const body = {
@@ -29,6 +33,7 @@ function Signup(){
       const response = await axios.post("/api/users/signup", body);
       console.log(response);
       setSuccessMessage("Usuario creado correctamente");
+      props.showError(null)
       setTimeout(() => {
         history.push("/users/login");
       }, 2000);
@@ -36,7 +41,7 @@ function Signup(){
     }
     catch (err) {
       console.error(err.response.data);
-      //aquí que muestre el mensaje de error props.showError(err.response.data.message) min 21:01. se tendrá que hacer con un componente a parte y pasarle un mensaje de error al showerror
+      props.showError(err.response.data.message);    //Le manda el mensaje de error al showerror. Esta prop le viene del app.js
     }
   };
 
@@ -80,8 +85,8 @@ function Signup(){
         </form>
 
         <div className="alert alert-success mt-2" style={{ display: successMessage ? 'block' : 'none' }} role="alert">
-          {successMessage}
-        </div>
+            {successMessage}
+          </div>
 
       </div>
     </div>

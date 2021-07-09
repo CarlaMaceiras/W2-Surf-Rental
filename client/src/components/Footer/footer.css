@@ -1,3 +1,19 @@
 .text-center {
-    background-color: rgba(0, 0, 0, 0.05);
+    background-color: #212529;
+    
+    
+    
+}
+.text-ligth{
+    color: white;
+    font-size: 18px;
+    font-weight: normal;
+    margin-left:10px; 
+}
+
+#footer{
+    
+    position: fixed;
+    margin-bottom: 0;
+    width: 100%;
 }

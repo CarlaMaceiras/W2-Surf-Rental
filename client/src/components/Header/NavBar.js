@@ -3,29 +3,89 @@ import "./navbar.css";
 import { Link } from 'react-router-dom';
 import Logo from "../../images/logoTransparente.png"
 
-
-
-
 const NavBar = ({user}) => {
+
   
+  const closeNav = () => {
+    
+    document.querySelector(".show").classList.remove("show")
+     
+  }
+
 
   return (
     <div>
+
+      <div className="ordenador"> </div>
+
+      <nav className="navbar navbar-expand-dark navbar-dark bg-dark">
+        <div className="container-fluid">
+          <Link className="header_logo logo" to="/"><img src={Logo} alt="logo"></img></Link>
+          <button 
+            className="navbar-toggler"
+            type="button" 
+            data-bs-toggle="collapse" 
+            data-bs-target="#navbarSupportedContent" 
+            aria-controls="navbarSupportedContent" 
+            aria-expanded="false" 
+            aria-label="Toggle navigation">
+            
+            <span className="navbar-toggler-icon"></span>
+          </button>
+
+          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+              <li className="nav-item" onClick={closeNav}>
+                <Link className="nav-link"  aria-current="page" to="/">Home</Link>
+              </li>
+              <li className="nav-item" onClick={closeNav}>
+                <Link className="nav-link" to="/beaches">Playas</Link>
+              </li>
+              <li className="nav-item " onClick={closeNav}>
+                <Link className="nav-link" to="/sports">Material</Link> 
+              </li>
+              <li className="nav-item " onClick={closeNav}>
+                <Link className="nav-link" to="/users/signup">Registrarse</Link> 
+              </li>
+              <li className="nav-item " onClick={closeNav}>
+                <Link className="nav-link" to="/users/login">Entrar</Link> 
+              </li>
+              <li className="nav-item " onClick={closeNav}>
+                <Link className="nav-link" to="/users/login/oneUser">Mi Perfil </Link> 
+              </li>
+              <li className="nav-item " onClick={closeNav}>
+                <Link className="nav-link" to="/rent/myRent">Mis Reservas</Link> 
+              </li>
+              {user?.role === 1 ? <li className="nav-item " onClick={closeNav}><Link className="nav-link" to="/admin">Admin</Link></li> : ""}
+            </ul>
+          </div>
+        </div>
+      </nav>
       
-        <nav className="header_navbar navbar navbar-expand-lg navbar-dark ">
+        {/* <nav className="header_navbar navbar navbar-expand-lg navbar-dark " >
           <div className="container-fluid">
             
             <div className= "header_logo">
               <a href="" className="logo"><img src={Logo} alt="logo"></img></a>
               <p></p>
             </div>
-            <button className="navbar-toggler" type="checkbox" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <button 
+              className={"navbar-toggler collapsed" + expanded} 
+              type="button" 
+              data-bs-toggle="collapse" 
+              data-bs-target="#navbarNavAltMarkup" 
+              aria-controls="navbarNavAltMarkup" 
+              aria-expanded="false" 
+              aria-label="Toggle navigation">
+              onClick={() => setExpanded(expanded ? "" : "expanded")}
+
               <span className="navbar-toggler-icon"></span>
             </button>
-            <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-              <div className="navbar-nav">
-                <Link className="nav-link" aria-current="page" to="/">Home</Link>
-                <Link className="nav-link" to="/beaches">Playas</Link>
+
+            <div className="collapse navbar-collapse"  id="navbarNavAltMarkup">
+              <div className="navbar-nav" >
+                <Link className="nav-link"  aria-current="page" to="/">Home</Link>
+                <Link className="nav-link" onClick={() => setExpanded(false)} to="/beaches">Playas</Link>
                 <Link className="nav-link" to="/sports">Material</Link>
                 <Link className="nav-link" to="/users/signup">Registrarse</Link>
                 <Link className="nav-link" to="/users/login">Entrar</Link>
@@ -35,7 +95,7 @@ const NavBar = ({user}) => {
               </div>
             </div>
           </div>
-        </nav>
+        </nav> */}
       
     </div>
       

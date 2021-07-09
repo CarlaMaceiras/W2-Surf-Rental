@@ -1,0 +1,18 @@
+
+.d-flex{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
+.close{
+    background-color: transparent;
+    border:none
+
+}
+
+.close span{
+    color: #842029;
+    font-size: 30px;
+}

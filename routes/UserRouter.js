@@ -89,7 +89,8 @@ UserRouter.post("/signup", async (req, res, next) => {  //
 
         return res.json({
             success: true,
-            user: newUser
+            user: newUser,
+            message: "Usuario creado correctamente"
         })
 
     } catch (error) {

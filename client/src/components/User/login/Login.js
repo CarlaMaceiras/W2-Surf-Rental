@@ -4,7 +4,7 @@ import { useHistory, Link} from 'react-router-dom';
 import { API_BASE_URL } from '../../../constants/apiConstants';
 import "./login.css"
 
-function Login({getUser}){
+function Login({getUser, showError}){
 
     let history = useHistory();
 
@@ -14,12 +14,14 @@ function Login({getUser}){
     const [successMessage, setSuccessMessage] = useState(null);
   
     const handleClick = async (e) => {
-      e.preventDefault();                                                            //Así no hace refresh la página
+      e.preventDefault(); 
+      showError(null)                                                           //Así no hace refresh la página
   
       try{
         const response = await axios.post("/api/users/login", { email, password });
         console.log(response.data);
         setSuccessMessage("Login correcto");
+        showError(null);
         localStorage.setItem("w2_token", response.data.token)
 
         getUser();
@@ -33,7 +35,7 @@ function Login({getUser}){
       }
       catch (err) {
         console.error(err.response.data);
-        //aquí que muestre el mensaje de error props.showError(err.response.data.message) min 21:01. se tendrá que hacer con un componente a parte y pasarle un mensaje de error al showerror
+        showError(err.response.data.message);
       }
     };
   
@@ -69,7 +71,7 @@ function Login({getUser}){
             </div>
           </form>
     
-          <div className="alert alert-success mt-2" style={{ display: successMessage ? 'block' : 'none' }} role="alert">
+          <div className="alertMess alert alert-success mt-2" style={{ display: successMessage ? 'block' : 'none' }} role="alert">
             {successMessage}
           </div>
         </div>

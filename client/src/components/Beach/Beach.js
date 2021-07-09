@@ -6,15 +6,18 @@ import { API_BASE_URL } from '../../constants/apiConstants';
 import "../Beach/beach.css";
 
 
-const Beach = () => {
+const Beach = (props) => {
     
     let today = new Date();
-    console.log(today.toISOString().substr(0,10))
+    
 
     const {beachId} = useParams();
     const [oneBeach, setBeach] = useState();
     const [date, setDate ] = useState(today.toISOString().substr(0,10));
     const [quantity, setQuantity] = useState();
+
+    props.showError("") 
+    props.showMessage("")
 
     let history = useHistory();
 
