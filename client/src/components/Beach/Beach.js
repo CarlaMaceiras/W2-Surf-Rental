@@ -6,7 +6,7 @@ import { API_BASE_URL } from '../../constants/apiConstants';
 import "../Beach/beach.css";
 
 
-const Beach = (props) => {
+const Beach = () => {
     
     let today = new Date();
     
@@ -16,8 +16,8 @@ const Beach = (props) => {
     const [date, setDate ] = useState(today.toISOString().substr(0,10));
     const [quantity, setQuantity] = useState();
 
-    props.showError("") 
-    props.showMessage("")
+
+   
 
     let history = useHistory();
 
@@ -64,6 +64,7 @@ const Beach = (props) => {
     
           } catch (err) {
             console.error(err.response.data);
+           
           }
        
         } else {
@@ -118,6 +119,7 @@ const Beach = (props) => {
                             </div>
                         ) 
                     })}
+
 
                 </div> : 
                 <p>Loading</p>

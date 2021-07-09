@@ -44,6 +44,7 @@
     border-color: rgb(59, 59, 59);
     color: white;
     width: 72%;
+    margin-bottom: 50px;
 }
 
 .btn-primary:hover{
