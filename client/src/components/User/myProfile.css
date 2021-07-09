@@ -1,25 +1,28 @@
 
 .perfil{
-    width: 98%;
+    width: 90%;
     margin: auto;
     display: flex;
+    flex-direction: column;
+    /* justify-content: center;
+    align-items: center; */
+}
+
+.mi_perfil{
+    display: flex;
     flex-direction: row;
-    justify-content: center;
-    align-items: center;
+    justify-content: space-between;
+    text-align:justify;
+
 }
 
-.perfil img{
-    width: 200px;
-    height: 200px;
-    border-radius: 100px;
-    margin-right: 40px;
+.card{
+    border: none;
 }
-
-
 
 .perfil_link a{
     font-size: 18px;
-    color: rgb(59, 59, 59);
+    color: rgb(20, 156, 138);
 }
 
 .mi_perfil label{
@@ -31,6 +34,7 @@
     margin: auto;
     display: flex;
     justify-content: center;
+    margin-bottom: 20px;
 }
 
 .boton_logout .btn{

@@ -21,20 +21,28 @@ const MyProfile= ({user}) => {
             </div>
             <div className= "perfil card col-12 col-lg-4 login-card mt-2 hv-center">
 
-                <div className="foto_perfil">
+                {/* <div className="foto_perfil">
                     <img src={fotoPerfil} alt="Foto perfil"/>
-                </div>
-          
+                </div> */}
+
                 <div className="mi_perfil mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Nombre:</label>
-                    <p>{user?.name}</p>
+                    <div>
+                        <label for="exampleInputEmail1" class="form-label">Nombre:</label>
+                        <p>{user?.name}</p>
+                    </div>
 
-                    <label for="exampleInputEmail1" class="form-label">Apellidos:</label>
-                    <p>{user?.surname}</p>
+                    <div>
+                        <label for="exampleInputEmail1" class="form-label">Apellidos:</label>
+                        <p>{user?.surname}</p>
+                    </div>
+                </div>
+                <div className="mi_perfil mb-3">
 
+                    <div>
                     <label for="exampleInputEmail1" class="form-label">Email:</label>
                     <p>{user?.email}</p>
-                
+                    </div>
+
                     <div className="perfil_link">
                         <Link to="/rent/myRent">Mis Reservas</Link>
                     </div>
