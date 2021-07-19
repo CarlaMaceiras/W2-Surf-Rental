@@ -9,3 +9,32 @@
     
 }
 
+@media screen and (min-width: 700px){
+    .carousel-inner {
+        height: 700px;
+    }
+
+    .carousel-inner img{
+       
+        height: 700px;
+    }
+
+    .carousel-caption h5{
+        font-size: 150px;
+        color: rgba(255, 255, 255, 0.74);
+       
+    }
+
+    .carousel-caption p{
+        font-size: 25px;
+        
+        color: rgba(255, 255, 255, 0.74);
+    }
+
+    .carousel-caption{
+        margin-bottom: 300px;
+    }
+    
+}
+    
+

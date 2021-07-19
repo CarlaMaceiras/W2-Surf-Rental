@@ -11,9 +11,29 @@
     margin-left:10px; 
 }
 
+.sponsor{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.sp{
+    display: flex;  
+    justify-content: space-around;
+}
+
+.sponsor img{
+    width: 85px;
+}
+
 #footer{
     
-    position: fixed;
+    
     margin-bottom: 0;
     width: 100%;
+}
+
+.sponsor{
+    height: 400px;
+    background-color: lightgrey;
 }

@@ -14,22 +14,14 @@ const NavBar = ({user}) => {
 
 
   return (
-    <div>
+    <div className="main">
 
       {/* <div className="ordenador"> </div> */}
 
-      <nav className="navbar navbar-expand-dark navbar-dark bg-dark">
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container-fluid">
           <Link className="header_logo logo" to="/"><img src={Logo} alt="logo"></img></Link>
-          <button 
-            className="navbar-toggler"
-            type="button" 
-            data-bs-toggle="collapse" 
-            data-bs-target="#navbarSupportedContent" 
-            aria-controls="navbarSupportedContent" 
-            aria-expanded="false" 
-            aria-label="Toggle navigation">
-            
+          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
 
@@ -44,18 +36,18 @@ const NavBar = ({user}) => {
               <li className="nav-item " onClick={closeNav}>
                 <Link className="nav-link" to="/sports">Material</Link> 
               </li>
-              <li className="nav-item " onClick={closeNav}>
+              {/* <li className="nav-item " onClick={closeNav}>
                 <Link className="nav-link" to="/users/signup">Registrarse</Link> 
+              </li> */}
+              <li className="nav-item " onClick={closeNav}>
+                <Link className="nav-link" to="/users/login"><i class="fas fa-sign-in-alt"></i></Link> 
               </li>
               <li className="nav-item " onClick={closeNav}>
-                <Link className="nav-link" to="/users/login">Entrar</Link> 
+                <Link className="nav-link" to="/users/login/oneUser"><i class="far fa-user"></i></Link> 
               </li>
-              <li className="nav-item " onClick={closeNav}>
-                <Link className="nav-link" to="/users/login/oneUser">Mi Perfil </Link> 
-              </li>
-              <li className="nav-item " onClick={closeNav}>
+              {/* <li className="nav-item " onClick={closeNav}>
                 <Link className="nav-link" to="/rent/myRent">Mis Reservas</Link> 
-              </li>
+              </li> */}
               {user?.role === 1 ? <li className="nav-item " onClick={closeNav}><Link className="nav-link" to="/admin">Admin</Link></li> : ""}
             </ul>
           </div>

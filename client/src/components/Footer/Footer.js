@@ -1,11 +1,30 @@
 import React from 'react';
 import "./footer.css";
+import olaian from "../../images/sponsores/olaian.png"
+import concello1 from "../../images/sponsores/oleiros.png"
+import concello2 from "../../images/sponsores/ferrol.jpg"
+import fede from "../../images/sponsores/federaciongalega.png"
+import fire from "../../images/sponsores/firewire.png"
+import pukas from "../../images/sponsores/Pukas.png"
 
 
 const Footer = () => {
 
     return(
         <div>
+            <div className="sponsor">
+                <div className="sp">
+                    <img src={fede} alt="sponsor"></img>
+                    <img src={fire} alt="sponsor"></img>
+                    <img src={pukas} alt="sponsor"></img>
+                </div>
+                <div className="sp">
+                    <img src={olaian} alt="sponsor"></img>
+                    <img src={concello1} alt="sponsor"></img>
+                    <img src={concello2} alt="sponsor"></img>
+                </div>
+                
+            </div>
             <footer id="footer" className="text-center text-white">
         
                 <div className="container p-4 pb-0">

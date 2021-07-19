@@ -1,12 +1,9 @@
 .header_navbar {
-    /* box-shadow:  0 3px  3px 0  rgb(41, 41, 41);  */
     background-color: black;
-    
-
 }
 
 
-/* .navbar-dark .navbar-nav .nav-link:hover{
+/* .navbar-nav .nav-link:hover{
     transform: scale(1.2);
     color: red;
 } */
@@ -24,25 +21,10 @@
     
 }
 
-/* .navbar-dark .navbar-nav {
-    box-shadow: 0 0 0 1px grey inset;
-    
-} */
-
-
-
 .navbar-dark .navbar-toggler {
     border-color: transparent;
     
 }
-
-/* .ordenador{
-    height: 50px;
-} */
-
-
-
-
 
 
 .navbar-toggler:focus {
@@ -56,10 +38,26 @@
     align-items: center;
 }
 
-
-
 .header_logo img{
     width: 200px;
 }
 
+@media screen and (min-width: 700px) {
+    .navbar-dark .navbar-nav .nav-link{
+        border-bottom: none;
+        font-size: 20px;
+    }
+
+    .navbar-collapse {
+        margin-left: 40px;
+        
+    }
+
+    .navbar-collapse li{
+        margin-right: 40px;
+        
+    }
+    
+
+}
 
