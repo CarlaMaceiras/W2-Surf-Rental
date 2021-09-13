@@ -2,7 +2,6 @@ import "../Home/home.css";
 import surf from "../../images/surf2.jpg"
 import sup from "../../images/sup.png"
 import feel from "../../images/feel.jpg"
-import video from "../../images/Surfing.mp4"
 
 
 const Home = (props) => {
