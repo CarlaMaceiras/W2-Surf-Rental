@@ -18,11 +18,11 @@ const Footer = () => {
                     <img src={fire} alt="sponsor"></img>
                     <img src={pukas} alt="sponsor"></img>
                 </div>
-                <div className="sp">
+                {/* <div className="sp">
                     <img src={olaian} alt="sponsor"></img>
                     <img src={concello1} alt="sponsor"></img>
                     <img src={concello2} alt="sponsor"></img>
-                </div>
+                </div> */}
                 
             </div>
             <footer id="footer" className="text-center text-white">

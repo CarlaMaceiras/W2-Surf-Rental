@@ -20,6 +20,7 @@
     justify-content: center;
     align-items: center;
     text-align: center;
+    font-weight: bold;
 }
 
 .date{
@@ -78,5 +79,32 @@
     border: 1px solid grey;
     width: 80%;
     margin-left: 40px;
+}
+
+@media screen and (min-width: 700px){
+
+    .main_page{
+        width: 80%;
+        margin: auto;
+    }
+
+    .playa{
+        width: 900px;
+        height: 700px;
+        margin: 40px auto 40px auto;
+    }
+
+    .playa_info{
+        padding: 10px;
+    }
+
+    .date {
+        flex-direction: row;
+    }
+
+    .date label{
+        margin-right: 20px;
+        color:darkred;
+    }
 }
 

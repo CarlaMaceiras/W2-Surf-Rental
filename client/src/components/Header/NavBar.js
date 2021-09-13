@@ -7,8 +7,12 @@ const NavBar = ({user}) => {
 
   
   const closeNav = () => {
-    
-    document.querySelector(".show").classList.remove("show")
+
+    let show= document.querySelector(".show");
+
+    if(show){ 
+      document.querySelector(".show").classList.remove("show")
+    } 
      
   }
 

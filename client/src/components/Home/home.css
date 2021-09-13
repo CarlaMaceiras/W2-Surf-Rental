@@ -11,28 +11,29 @@
 
 @media screen and (min-width: 700px){
     .carousel-inner {
-        height: 700px;
+        height: auto;
     }
 
     .carousel-inner img{
        
-        height: 700px;
+        height: auto;
     }
 
     .carousel-caption h5{
-        font-size: 150px;
+        font-size: 100px;
         color: rgba(255, 255, 255, 0.74);
+        font-family:Verdana, Geneva, Tahoma, sans-serif;
        
     }
 
     .carousel-caption p{
-        font-size: 25px;
-        
+        font-size: 20px;
+        font-family:Verdana, Geneva, Tahoma, sans-serif;
         color: rgba(255, 255, 255, 0.74);
     }
 
     .carousel-caption{
-        margin-bottom: 300px;
+        margin-bottom: 400px;
     }
     
 }

@@ -98,7 +98,7 @@ const App = () => {
           </PrivateRoute>
 
           <PrivateRoute path="/rent/myRent">
-            <MyRent showError={updateErrorMessage} />
+            <MyRent  />
           </PrivateRoute>
 
           <Route path="*" component={() => "404 NOT FOUND"}></Route>

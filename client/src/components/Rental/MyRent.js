@@ -27,7 +27,7 @@ const MyRent = () => {
             console.error(err.response.data);
         if(err.response.status === 401){
             
-            history.pushState("/users/login")
+            history.push("/users/login")
         }
         }
     };
@@ -95,8 +95,9 @@ const MyRent = () => {
                     {myRent.map(oneRent => {
                         
                         return (
-                            
+
                             <div key ={oneRent._id} className="one_info"> 
+                            
                                 <div className="delete_button">
                                     <button type="button" className="boton_delete btn-close" aria-label="Close" onClick={() => deleteReserve (oneRent._id)}></button>
                                 </div>
@@ -114,7 +115,8 @@ const MyRent = () => {
                                     <p>{oneRent.quantity}</p>
                                     <p>{formatDate(oneRent.date)}</p>
                                 </div>
-                            </div>         
+                            </div> 
+                             
                         );
                     })}
                 </div>
