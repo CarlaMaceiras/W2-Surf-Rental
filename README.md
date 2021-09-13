@@ -77,107 +77,59 @@ A continuación se muestra un esquema de los modelos que serán la base de toda 
 
 -USUARIO
 
-1. POST: /signup.
+1. POST: /signup. Ruta publica para registro de nuevo usuario.
 
-Ruta publica para registro de nuevo usuario.
+2. POST: /signup/newAdmin. Ruta para registro de administrador.
 
-2. POST: /signup/newAdmin.
+3. POST: /login. Ruta publica para login de usuario ya registrado.
 
-Ruta para registro de administrador.
+4. GET: /login/oneUser. Ruta privada para ver un usuario registrado.
 
-3. POST: /login. 
+5. PUT: /changePassword. Ruta privada para realizar el cambio de contraseña.
 
-Ruta publica para login de usuario ya registrado.
-
-4. GET: /login/oneUser. 
-
-Ruta privada para ver un usuario registrado.
-
-5. PUT: /changePassword. 
-
-Ruta privada para realizar el cambio de contraseña.
-
-6. PUT: /forgot-Password. 
-
-Ruta privada para enviar un email para reestablecer contraseña.
+6. PUT: /forgot-Password. Ruta privada para enviar un email para reestablecer contraseña.
 
 -RESERVA:
 
-1. POST: /newRental/:beachId. 
+1. POST: /newRental/:beachId. Ruta privada para crear la reserva
 
-Ruta privada para crear la reserva
+2. GET: /myRental. Ruta privada para ver todas las reservas de un usuario.
 
-2. GET: /myRental.
+3. GET: /allRental/listOfRental. Ruta privada de admin para ver todas las reservas de los usuarios
 
-Ruta privada para ver todas las reservas de un usuario.
+4. GET: /myRental/:nuevaReservaId. Ruta privada para ver una reserva del usuario.
 
-3. GET: /allRental/listOfRental. 
+5. DELETE: /deleteMyRental/:id. Ruta privada para eliminar una reserva.
 
-Ruta privada de admin para ver todas las reservas de los usuarios
-
-4. GET: /myRental/:nuevaReservaId. 
-
-Ruta privada para ver una reserva del usuario.
-
-5. DELETE: /deleteMyRental/:id. 
-
-Ruta privada para eliminar una reserva.
-
-6. PUT: /allRental. 
-
-Comparar las reservas por días para devolver el stock cuando pase la fecha de la reserva1. 
+6. PUT: /allRental. Comparar las reservas por días para devolver el stock cuando pase la fecha de la reserva1. 
 
 -PLAYA:
 
-1. POST: /nerBeach. 
+1. POST: /nerBeach. Ruta privada de admin para la creación de nuevas playas.
 
-Ruta privada de admin para la creación de nuevas playas.
+2. GET: /. Ruta pública para ver todas las playas.
 
-2. GET: /. 
+3. GET: /find/:id. Ruta pública para ver solo una playa.
 
-Ruta pública para ver todas las playas.
+4. PUT:/addEquipment. Ruta privada de admin para añadir material a una playa 
 
-3. GET: /find/:id. 
+5. PUT:/removeEquipment/:id. Ruta privada de admin para eliminar material a una playa 
 
-Ruta pública para ver solo una playa.
+6. PUT:/addEquipment/stock. Ruta privada de admin para añadir stock de un material a una playa 
 
-4. PUT:/addEquipment. 
+7. PUT:/removeEquipment/stock. Ruta privada de admin para eliminar stock de un material a una playa 
 
-Ruta privada de admin para añadir material a una playa 
-
-5. PUT:/removeEquipment/:id. 
-
-Ruta privada de admin para eliminar material a una playa 
-
-6. PUT:/addEquipment/stock. 
-
-Ruta privada de admin para añadir stock de un material a una playa 
-
-7. PUT:/removeEquipment/stock. 
-
-Ruta privada de admin para eliminar stock de un material a una playa 
-
-8. DELETE: /deleteBeach/:id. 
-
-Ruta privada de admin para eliminar una playa.
+8. DELETE: /deleteBeach/:id. Ruta privada de admin para eliminar una playa.
 
 -MATERIAL:
 
-1. POST: /createEquipment. 
+1. POST: /createEquipment. Ruta privada de admin para crear un nuevo material
 
-Ruta privada de admin para crear un nuevo material
+2. GET: /allEquipment. Ruta pública para ver todo el material sin estar asociado a una playa.
 
-2. GET: /allEquipment. 
+3. GET: /oneEquipment/:id. Ruta pública para ver un material en concreto sin estar asociado a una playa.
 
-Ruta pública para ver todo el material sin estar asociado a una playa.
-
-3. GET: /oneEquipment/:id. 
-
-Ruta pública para ver un material en concreto sin estar asociado a una playa.
-
-4. DELETE: /deleteEquipment/:id. 
-
-Ruta privada de admin para eliminar un material.
+4. DELETE: /deleteEquipment/:id. Ruta privada de admin para eliminar un material.
 
 Para comprobar la autentificación del usuario contamos con un middleware que se encarga de revisar el token del mismo, dandole asi, acceso a las rutas privadas.
 
